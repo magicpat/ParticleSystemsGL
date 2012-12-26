@@ -8,25 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		4D1F52A3168B4DBF00EB0BCB /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D1F52A2168B4DBF00EB0BCB /* main.cpp */; };
-		4D1F52A5168B4DBF00EB0BCB /* ParticleSystem.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4D1F52A4168B4DBF00EB0BCB /* ParticleSystem.1 */; };
 		4D1F52B1168B4EA500EB0BCB /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D1F52B0168B4EA500EB0BCB /* OpenGL.framework */; settings = {ATTRIBUTES = (Required, ); }; };
-		4D1F52B5168B4FDF00EB0BCB /* LUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D1F52B3168B4FDF00EB0BCB /* LUtil.cpp */; };
+		4D1F52B5168B4FDF00EB0BCB /* RenderManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D1F52B3168B4FDF00EB0BCB /* RenderManager.cpp */; };
 		4D1F52BC168B65BC00EB0BCB /* fontain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D1F52BA168B65BC00EB0BCB /* fontain.cpp */; };
 		4D1F52C7168B6B7800EB0BCB /* particle_mask.raw in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4D1F52C2168B6AAF00EB0BCB /* particle_mask.raw */; };
 		4D1F52C8168B6B7800EB0BCB /* particle.raw in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4D1F52C3168B6AAF00EB0BCB /* particle.raw */; };
+		4D1F52CC168B87D700EB0BCB /* Drawable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D1F52CA168B87D700EB0BCB /* Drawable.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		4D1F529C168B4DBF00EB0BCB /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = usr/share/man/man1;
-			dstSubfolderSpec = 0;
-			files = (
-				4D1F52A5168B4DBF00EB0BCB /* ParticleSystem.1 in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-		};
 		4D1F52C6168B6B0600EB0BCB /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -43,15 +33,16 @@
 /* Begin PBXFileReference section */
 		4D1F529E168B4DBF00EB0BCB /* ParticleSystem */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ParticleSystem; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D1F52A2168B4DBF00EB0BCB /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		4D1F52A4168B4DBF00EB0BCB /* ParticleSystem.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = ParticleSystem.1; sourceTree = "<group>"; };
 		4D1F52B0168B4EA500EB0BCB /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		4D1F52B2168B4F6F00EB0BCB /* LOpenGL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LOpenGL.h; sourceTree = "<group>"; };
-		4D1F52B3168B4FDF00EB0BCB /* LUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LUtil.cpp; sourceTree = "<group>"; };
-		4D1F52B4168B4FDF00EB0BCB /* LUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LUtil.h; sourceTree = "<group>"; };
+		4D1F52B3168B4FDF00EB0BCB /* RenderManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RenderManager.cpp; sourceTree = "<group>"; };
+		4D1F52B4168B4FDF00EB0BCB /* RenderManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RenderManager.h; sourceTree = "<group>"; };
 		4D1F52BA168B65BC00EB0BCB /* fontain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = fontain.cpp; sourceTree = "<group>"; };
 		4D1F52BB168B65BC00EB0BCB /* fontain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fontain.h; sourceTree = "<group>"; };
 		4D1F52C2168B6AAF00EB0BCB /* particle_mask.raw */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = particle_mask.raw; path = images/particle_mask.raw; sourceTree = "<group>"; };
 		4D1F52C3168B6AAF00EB0BCB /* particle.raw */ = {isa = PBXFileReference; lastKnownFileType = file; name = particle.raw; path = images/particle.raw; sourceTree = "<group>"; };
+		4D1F52CA168B87D700EB0BCB /* Drawable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Drawable.cpp; sourceTree = "<group>"; };
+		4D1F52CB168B87D700EB0BCB /* Drawable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Drawable.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +60,7 @@
 		4D1F5293168B4DBF00EB0BCB = {
 			isa = PBXGroup;
 			children = (
+				4D1F52B8168B657300EB0BCB /* images */,
 				4D1F52B0168B4EA500EB0BCB /* OpenGL.framework */,
 				4D1F52A1168B4DBF00EB0BCB /* ParticleSystem */,
 				4D1F529F168B4DBF00EB0BCB /* Products */,
@@ -86,13 +78,10 @@
 		4D1F52A1168B4DBF00EB0BCB /* ParticleSystem */ = {
 			isa = PBXGroup;
 			children = (
-				4D1F52B9168B658600EB0BCB /* psystems */,
-				4D1F52B8168B657300EB0BCB /* images */,
+				4D1F52C9168B87B500EB0BCB /* rendering */,
+				4D1F52B9168B658600EB0BCB /* particles */,
 				4D1F52A2168B4DBF00EB0BCB /* main.cpp */,
-				4D1F52A4168B4DBF00EB0BCB /* ParticleSystem.1 */,
 				4D1F52B2168B4F6F00EB0BCB /* LOpenGL.h */,
-				4D1F52B3168B4FDF00EB0BCB /* LUtil.cpp */,
-				4D1F52B4168B4FDF00EB0BCB /* LUtil.h */,
 			);
 			path = ParticleSystem;
 			sourceTree = "<group>";
@@ -104,15 +93,27 @@
 				4D1F52C3168B6AAF00EB0BCB /* particle.raw */,
 			);
 			name = images;
+			path = ParticleSystem;
 			sourceTree = "<group>";
 		};
-		4D1F52B9168B658600EB0BCB /* psystems */ = {
+		4D1F52B9168B658600EB0BCB /* particles */ = {
 			isa = PBXGroup;
 			children = (
 				4D1F52BA168B65BC00EB0BCB /* fontain.cpp */,
 				4D1F52BB168B65BC00EB0BCB /* fontain.h */,
 			);
-			name = psystems;
+			name = particles;
+			sourceTree = "<group>";
+		};
+		4D1F52C9168B87B500EB0BCB /* rendering */ = {
+			isa = PBXGroup;
+			children = (
+				4D1F52B3168B4FDF00EB0BCB /* RenderManager.cpp */,
+				4D1F52B4168B4FDF00EB0BCB /* RenderManager.h */,
+				4D1F52CA168B87D700EB0BCB /* Drawable.cpp */,
+				4D1F52CB168B87D700EB0BCB /* Drawable.h */,
+			);
+			name = rendering;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -124,7 +125,6 @@
 			buildPhases = (
 				4D1F529A168B4DBF00EB0BCB /* Sources */,
 				4D1F529B168B4DBF00EB0BCB /* Frameworks */,
-				4D1F529C168B4DBF00EB0BCB /* CopyFiles */,
 				4D1F52C6168B6B0600EB0BCB /* CopyFiles */,
 			);
 			buildRules = (
@@ -168,8 +168,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D1F52A3168B4DBF00EB0BCB /* main.cpp in Sources */,
-				4D1F52B5168B4FDF00EB0BCB /* LUtil.cpp in Sources */,
+				4D1F52B5168B4FDF00EB0BCB /* RenderManager.cpp in Sources */,
 				4D1F52BC168B65BC00EB0BCB /* fontain.cpp in Sources */,
+				4D1F52CC168B87D700EB0BCB /* Drawable.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

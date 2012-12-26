@@ -8,20 +8,24 @@
 
 #include "fontain.h"
 
-#include "LUtil.h"
+#include "RenderManager.h"
 #include <stdio.h>
 #include <math.h>
 
-GLfloat texture[10];
 
-const unsigned int ParticleCount = 500;
+Fontain::Fontain() : Drawable(){
+    glCreateParticles();
+    
+    m_textures[0] = LoadTextureRAW( "particle_mask.raw", 256, 256);
+    m_textures[1] = LoadTextureRAW( "particle.raw", 256, 256 );
+}
 
-PARTICLES Particle[ParticleCount];
+Fontain::~Fontain(){
+    ;
+}
 
-
-
-void square (void) {
-    glBindTexture( GL_TEXTURE_2D, texture[0] );
+void Fontain::square (void) {
+    glBindTexture( GL_TEXTURE_2D, m_textures[0] );
     glBegin (GL_QUADS);
     glTexCoord2d(0.0,0.0);
     glVertex2d(-1.0,-1.0);
@@ -34,82 +38,86 @@ void square (void) {
     glEnd();
 }
 
-void glCreateParticles (void) {
+void Fontain::glCreateParticles (void) {
     int i;
-    for (i = 1; i < ParticleCount; i++)
+    for (i = 1; i < MAX_PARTICLES; i++)
     {
-        Particle[i].Xpos = 0;
-        Particle[i].Ypos = -5;
-        Particle[i].Zpos = -5;
-        Particle[i].Xmov = (((((((2 - 1 + 1) * rand()%11) + 1) - 1 + 1) *
+        m_particles[i].Xpos = 0;
+        m_particles[i].Ypos = -5;
+        m_particles[i].Zpos = -5;
+        m_particles[i].Xmov = (((((((2 - 1 + 1) * rand()%11) + 1) - 1 + 1) *
                               rand()%11) + 1) * 0.005) - (((((((2 - 1 + 1) * rand()%11) + 1) - 1 + 1
                                                              ) * rand()%11) + 1) * 0.005);
-        Particle[i].Zmov = (((((((2 - 1 + 1) * rand()%11) + 1) - 1 + 1) *
+        m_particles[i].Zmov = (((((((2 - 1 + 1) * rand()%11) + 1) - 1 + 1) *
                               rand()%11) + 1) * 0.005) - (((((((2 - 1 + 1) * rand()%11) + 1) - 1 + 1
                                                              ) * rand()%11) + 1) * 0.005);
-        Particle[i].Red = 1;
-        Particle[i].Green = 1;
-        Particle[i].Blue = 1;
-        Particle[i].Scalez = 0.25;
-        Particle[i].Direction = 0;
-        Particle[i].Acceleration = ((((((8 - 5 + 2) * rand()%11) + 5
+        m_particles[i].Red = 1;
+        m_particles[i].Green = 1;
+        m_particles[i].Blue = 1;
+        m_particles[i].Scalez = 0.25;
+        m_particles[i].Direction = 0;
+        m_particles[i].Acceleration = ((((((8 - 5 + 2) * rand()%11) + 5
                                        ) - 1 + 1) * rand()%11) + 1) * 0.02;
-        Particle[i].Deceleration = 0.0025;
+        m_particles[i].Deceleration = 0.0025;
     }
 }
 
-void glUpdateParticles (void) {
+void Fontain::glUpdateParticles(){
     int i;
-    for (i = 1; i < ParticleCount; i++)
+    for (i = 1; i < MAX_PARTICLES; i++)
     {
         
-        glColor3f (Particle[i].Red, Particle[i].Green,
-                   Particle[i].Blue);
+        glColor3f (m_particles[i].Red, m_particles[i].Green,
+                   m_particles[i].Blue);
         
-        Particle[i].Ypos = Particle[i].Ypos + Particle[i]
-        .Acceleration - Particle[i].Deceleration;
-        Particle[i].Deceleration = Particle[i].Deceleration +
+        m_particles[i].Ypos = m_particles[i].Ypos + m_particles[i]
+        .Acceleration - m_particles[i].Deceleration;
+        m_particles[i].Deceleration = m_particles[i].Deceleration +
         0.0025;
         
-        Particle[i].Xpos = Particle[i].Xpos + Particle[i].Xmov;
-        Particle[i].Zpos = Particle[i].Zpos + Particle[i].Zmov;
+        m_particles[i].Xpos = m_particles[i].Xpos + m_particles[i].Xmov;
+        m_particles[i].Zpos = m_particles[i].Zpos + m_particles[i].Zmov;
         
-        Particle[i].Direction = Particle[i].Direction + ((((((int
-                                                              )(0.5 - 0.1 + 0.1) * rand()%11) + 1) - 1 + 1) * rand()%11) + 1);
+        m_particles[i].Direction = m_particles[i].Direction + ((((((int
+                                                                    )(0.5 - 0.1 + 0.1) * rand()%11) + 1) - 1 + 1) * rand()%11) + 1);
         
-        if (Particle[i].Ypos < -5)
+        if (m_particles[i].Ypos < -5)
         {
-            Particle[i].Xpos = 0;
-            Particle[i].Ypos = -5;
-            Particle[i].Zpos = -5;
-            Particle[i].Red = 1;
-            Particle[i].Green = 1;
-            Particle[i].Blue = 1;
-            Particle[i].Direction = 0;
-            Particle[i].Acceleration = ((((((8 - 5 + 2) * rand()%11) + 5
-                                           ) - 1 + 1) * rand()%11) + 1) * 0.02;
-            Particle[i].Deceleration = 0.0025;
+            m_particles[i].Xpos = 0;
+            m_particles[i].Ypos = -5;
+            m_particles[i].Zpos = -5;
+            m_particles[i].Red = 1;
+            m_particles[i].Green = 1;
+            m_particles[i].Blue = 1;
+            m_particles[i].Direction = 0;
+            m_particles[i].Acceleration = ((((((8 - 5 + 2) * rand()%11) + 5
+                                              ) - 1 + 1) * rand()%11) + 1) * 0.02;
+            m_particles[i].Deceleration = 0.0025;
         }
         
     }
 }
 
-void glDrawParticles (void) {
+void Fontain::update() {
+    glUpdateParticles();
+}
+
+void Fontain::draw() {
     int i;
-    for (i = 1; i < ParticleCount; i++)
+    for (i = 1; i < MAX_PARTICLES; i++)
     {
         glPushMatrix();
         
-        glTranslatef (Particle[i].Xpos, Particle[i].Ypos, Particle[i].Zpos);
-        glRotatef (Particle[i].Direction - 90, 0, 0, 1);
+        glTranslatef (m_particles[i].Xpos, m_particles[i].Ypos, m_particles[i].Zpos);
+        glRotatef (m_particles[i].Direction - 90, 0, 0, 1);
         
-        glScalef (Particle[i].Scalez, Particle[i].Scalez, Particle[i].Scalez);
+        glScalef (m_particles[i].Scalez, m_particles[i].Scalez, m_particles[i].Scalez);
         
         glDisable (GL_DEPTH_TEST);
         glEnable (GL_BLEND);
         
         glBlendFunc (GL_DST_COLOR, GL_ZERO);
-        glBindTexture (GL_TEXTURE_2D, texture[0]);
+        glBindTexture (GL_TEXTURE_2D, m_textures[0]);
         
         glBegin (GL_QUADS);
         glTexCoord2d (0, 0);
@@ -123,7 +131,7 @@ void glDrawParticles (void) {
         glEnd();
         
         glBlendFunc (GL_ONE, GL_ONE);
-        glBindTexture (GL_TEXTURE_2D, texture[1]);
+        glBindTexture (GL_TEXTURE_2D, m_textures[1]);
         
         glBegin (GL_QUADS);
         glTexCoord2d (0, 0);
@@ -143,37 +151,22 @@ void glDrawParticles (void) {
     }
 }
 
-void display (void) {
+/**
+void Fontain::display () {
     glClearDepth (1);
     glClearColor (0.0,0.0,0.0,1.0);
     glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glLoadIdentity();
     glTranslatef (0,0,-10);
+    
     glUpdateParticles();
     glDrawParticles();
     glutSwapBuffers();
 }
+ **/
 
-void init (void) {
-    glEnable( GL_TEXTURE_2D );
-    glEnable(GL_DEPTH_TEST);
-    
-    glCreateParticles();
-    
-    texture[0] = LoadTextureRAW( "particle_mask.raw",256,256
-                                ); //load our texture
-    texture[1] = LoadTextureRAW( "particle.raw",256,256);
-    //load our texture
-}
 
-void reshape (int w, int h) {
-    glViewport (0, 0, (GLsizei)w, (GLsizei)h);
-    glMatrixMode (GL_PROJECTION);
-    glLoadIdentity ();
-    gluPerspective (60, (GLfloat)w / (GLfloat)h, 1.0, 100.0);
-    glMatrixMode (GL_MODELVIEW);
-}
-
+/*
 int main (int argc, char **argv) {
     glutInit (&argc, argv);
     glutInitDisplayMode (GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH);
@@ -187,11 +180,11 @@ int main (int argc, char **argv) {
     glutMainLoop ();
     return 0;
 }
+ */
 
 //function to load the RAW file
 
-GLuint LoadTextureRAW( const char * filename, int width, 
-                      int height )
+GLuint Fontain::LoadTextureRAW( const char * filename, int width, int height )
 {
     GLuint texture;
     unsigned char * data;
@@ -209,29 +202,23 @@ GLuint LoadTextureRAW( const char * filename, int width,
     
     glBindTexture(GL_TEXTURE_2D, texture);
     
-    glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, 
-                     GL_REPEAT);
-    glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, 
-                     GL_REPEAT);
+    glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
     
-    glTexEnvi( GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, 
-              GL_MODULATE );
+    glTexEnvi( GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE );
     
-    glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER,
-                    GL_LINEAR_MIPMAP_NEAREST );
+    glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_NEAREST );
     
-    glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER,
-                    GL_LINEAR );
+    glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR );
     
-    gluBuild2DMipmaps(GL_TEXTURE_2D, 3, width, height, 
-                      GL_RGB, GL_UNSIGNED_BYTE, data);
+    gluBuild2DMipmaps(GL_TEXTURE_2D, 3, width, height, GL_RGB, GL_UNSIGNED_BYTE, data);
     
     free( data );
     
     return texture;
 }
 
-void FreeTexture( GLuint texture )
+void Fontain::FreeTexture( GLuint texture )
 {
     glDeleteTextures( 1, &texture );
 }

@@ -9,7 +9,8 @@
 #ifndef __ParticleSystem__fontain__
 #define __ParticleSystem__fontain__
 
-#include "LUtil.h"
+#include "LOpenGL.h"
+#include "Drawable.h"
 
 
 typedef struct
@@ -27,14 +28,27 @@ typedef struct
     double Deceleration;
     double Scalez;
     bool Visible;
-}PARTICLES;
+}PARTICLE;
 
-GLuint LoadTextureRAW( const char * filename, int width, int height );
-void FreeTexture( GLuint texturez );
-void square ( void );
-void glCreateParticles( void );
-void glUpdateParticles( void );
-void glDrawParticles( void );
+class Fontain : public Drawable {
+public:
+    static const unsigned int MAX_PARTICLES = 500;
+    Fontain();
+    ~Fontain();
+    
+    virtual void update();
+    virtual void draw();
+    
+private:
+    GLuint LoadTextureRAW( const char * filename, int width, int height );
+    void FreeTexture( GLuint texturez );
+    void square ();
+    void glCreateParticles();
+    void glUpdateParticles();
+    
+    GLfloat m_textures[10];
+    PARTICLE m_particles[MAX_PARTICLES];
+};
 
 
 #endif 

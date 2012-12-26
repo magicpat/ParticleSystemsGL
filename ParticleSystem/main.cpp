@@ -6,52 +6,28 @@
 //  Copyright (c) 2012 Patrick Stapfer. All rights reserved.
 //
 
-#include "LUtil.h"
+#include "RenderManager.h"
+#include "fontain.h"
 
-void runMainLoop( int val );
-
-/*
 int main( int argc, char* args[] )
 {
-    //Initialize FreeGLUT
-    glutInit( &argc, args );
+    RenderManager renderManager;
     
-    //Create OpenGL 2.1 context
-    glutInitContextVersion( 2, 1 );
+    bool initialized = renderManager.init(argc, args);
+
+     //Do post window/context creation initialization
+     if( !initialized)
+     {
+         printf( "Unable to initialize graphics library!\n" );
+         return 1;
+     }
     
-    //Create Double Buffered Window
-    glutInitDisplayMode( GLUT_DOUBLE );
-    glutInitWindowSize( SCREEN_WIDTH, SCREEN_HEIGHT );
-    glutCreateWindow( "OpenGL" );
-    
-    //Do post window/context creation initialization
-    if( !initGL() )
-    {
-        printf( "Unable to initialize graphics library!\n" );
-        return 1;
-    }
-    
-    //Set rendering function
-    glutDisplayFunc( render );
-    
-    //Set main loop
-    glutTimerFunc( 1000 / SCREEN_FPS, runMainLoop, 0 );
-    
+    Drawable* fontain = new Fontain;
+    renderManager.addDrawable(fontain);
+
     //Start GLUT main loop
     glutMainLoop();
-    
+ 
     return 0;
-    
-}
- */
-
-void runMainLoop( int val )
-{
-    //Frame logic
-    update();
-    render();
-    
-    //Run frame one more time
-    glutTimerFunc( 1000 / SCREEN_FPS, runMainLoop, val );
 }
 
