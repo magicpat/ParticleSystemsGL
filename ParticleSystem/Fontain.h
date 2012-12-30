@@ -28,11 +28,13 @@ typedef struct
     double Deceleration;
     double Scalez;
     bool Visible;
-}PARTICLE;
+} PARTICLE;
 
 class Fontain : public Drawable {
 public:
     static const unsigned int MAX_PARTICLES = 500;
+    
+    Fontain(Vector3D startPosition);
     Fontain();
     ~Fontain();
     
@@ -47,6 +49,7 @@ private:
     void glUpdateParticles();
     
     GLfloat m_textures[10];
+    GLfloat m_radius;
     PARTICLE m_particles[MAX_PARTICLES];
 };
 

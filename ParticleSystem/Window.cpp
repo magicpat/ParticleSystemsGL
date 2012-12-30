@@ -7,17 +7,15 @@
 //
 
 #include "LOpenGL.h"
-#include "RenderManager.h"
+#include "Window.h"
 
-//Initialize static members
-std::vector<Drawable*> RenderManager::m_drawables;
+Game* Window::m_game;
+Camera* Window::m_camera;
 
-RenderManager::RenderManager(){
-
-}
-
-bool RenderManager::init(int argc, char* args[])
-{
+Window::Window(int argc, char* args[], Game* game, Camera* camera): m_window(0){
+    Window::m_game = game;
+    Window::m_camera = camera;
+    
     //Initialize FreeGLUT
     glutInit( &argc, args );
     
@@ -36,6 +34,7 @@ bool RenderManager::init(int argc, char* args[])
     //Enable Texturizing
     glEnable( GL_TEXTURE_2D );
     glEnable( GL_DEPTH_TEST );
+    glFrontFace(GL_CW);
     
     //Initialize Modelview Matrix
     glMatrixMode( GL_MODELVIEW );
@@ -49,54 +48,59 @@ bool RenderManager::init(int argc, char* args[])
     
     if( error != GL_NO_ERROR )
     {
-        printf( "Error initializing OpenGL! %s\n", gluErrorString( error ) );
-        return false;
+        throw error;
     }
     
     //Set rendering function
-    glutDisplayFunc( RenderManager::render );
+    glutDisplayFunc( Window::render );
     
     //Set reshape callback
     glutReshapeFunc (reshape);
     
     //Set the run-callback for the mainloop
-    glutTimerFunc( 1000 / RenderManager::SCREEN_FPS, RenderManager::run, 0 );
+    glutTimerFunc( 1000 / Window::SCREEN_FPS, Window::run, 0 );
     
-    return true;
+    glFrustum( -20.0f,
+                 20.0f,
+                -20.0f,
+                 20.0f,
+                 0.0005f,
+                 20.0f);
+}
+
+bool Window::destroy(){
+    if(this->m_window > 0){
+        glutDestroyWindow(this->m_window);
+        return true;
+    }
+    return false;
 }
 
 
-void RenderManager::addDrawable(Drawable* d){
-    RenderManager::m_drawables.push_back(d);
-}
- 
-
-void RenderManager::update()
+void Window::render()
 {
-    
-}
-
-void RenderManager::render()
-{
+    //Clear and set the image to render
     glClearDepth (1);
     glClearColor (0.0,0.0,0.0,1.0);
     glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    glLoadIdentity();
-    glTranslatef (0,0,-10);
     
-    for(std::vector<Drawable*>::size_type i = 0; i != m_drawables.size(); i++) {
-        m_drawables[i]->update();
-    }
+    //Reset Worldmatrix to (0,0,0)
+    //glLoadIdentity();
     
-    for(std::vector<Drawable*>::size_type i = 0; i != m_drawables.size(); i++) {
-        m_drawables[i]->draw();
-    }
+    //Call to the game-logic to draw it's drawables
+    Window::m_game->draw();
+    
+    
+    //Reposition the camera perspective
+    
+    //glLoadIdentity();
+    Window::m_camera->draw();
     
     //Update screen
     glutSwapBuffers();
 }   
 
-void RenderManager::reshape (int width, int height) {
+void Window::reshape (int width, int height) {
     glViewport (0, 0, (GLsizei)width, (GLsizei)height);
     glMatrixMode (GL_PROJECTION);
     glLoadIdentity ();
@@ -104,11 +108,10 @@ void RenderManager::reshape (int width, int height) {
     glMatrixMode (GL_MODELVIEW);
 }
 
-void RenderManager::run( int val ){
+void Window::run( int val ){
     //Frame logic
-    RenderManager::update();
-    RenderManager::render();
+    Window::render();
     
     //Run frame one more time
-    glutTimerFunc( 1000 / RenderManager::SCREEN_FPS, RenderManager::run, val );
+    glutTimerFunc( 1000 / Window::SCREEN_FPS, Window::run, val );
 }

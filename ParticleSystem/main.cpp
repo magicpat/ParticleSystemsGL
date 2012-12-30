@@ -6,27 +6,32 @@
 //  Copyright (c) 2012 Patrick Stapfer. All rights reserved.
 //
 
-#include "RenderManager.h"
+#include "Window.h"
 #include "fontain.h"
+#include "Camera.h"
+#include "Keyboard.h"
+
 
 int main( int argc, char* args[] )
 {
-    RenderManager renderManager;
-    
-    bool initialized = renderManager.init(argc, args);
-
-     //Do post window/context creation initialization
-     if( !initialized)
-     {
-         printf( "Unable to initialize graphics library!\n" );
-         return 1;
-     }
-    
-    Drawable* fontain = new Fontain;
-    renderManager.addDrawable(fontain);
-
-    //Start GLUT main loop
-    glutMainLoop();
+    try{
+        //Create the most important application components
+        Camera camera;
+        Game game(&camera);
+        Window window(argc, args, &game, &camera);
+        
+        //Create some additional application components
+        Keyboard keyboard(&game, &camera, &window);
+        
+        //Start the functionality of keyboard and gamelogic
+        keyboard.listen();
+        game.start();
+        
+        //Start GLUT main loop
+        glutMainLoop();
+    }catch(GLenum error){
+        printf( "Error initializing OpenGL! %s\n", gluErrorString( error ) );
+    }
  
     return 0;
 }

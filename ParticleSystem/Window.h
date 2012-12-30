@@ -9,43 +9,36 @@
 #define LUTIL_H
 
 #include "LOpenGL.h"
-#include "Drawable.h"
+#include "Camera.h"
+#include "Game.h"
 #include <vector>
 
 
-class RenderManager{
-    
-    
+class Window{
+
 public:
     //Screen Constants
     static const int SCREEN_WIDTH = 640;
     static const int SCREEN_HEIGHT = 480;
     static const int SCREEN_FPS = 60;
     
-    
-    
     //Static methods
-    static void update();
-    static void render();
+    static void render(); //TODO: Should definitaley be a tick-counter here...
     static void reshape(int width, int height);
     
-    
-    
-    
-    //Non-Static methods
-    RenderManager();
-
-    bool init(int argc, char* args[]);
-    void addDrawable(Drawable* d);
-    
-    
-    
+    //Instance methods
+    Window(int argc, char* args[], Game* game, Camera* camera);
+    bool destroy();
     
 private:
     static void run( int val );
-    static std::vector<Drawable*> m_drawables;
-    int m_window;
     
+    //Static variables to be able to access them in the OpenGL-Callbacks, defined above
+    static Game* m_game;
+    static Camera* m_camera;
+    
+    //Instance variables
+    int m_window;
 };
 
 #endif

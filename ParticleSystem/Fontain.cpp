@@ -6,92 +6,71 @@
 //  Copyright (c) 2012 Patrick Stapfer. All rights reserved.
 //
 
-#include "fontain.h"
+#include "Fontain.h"
 
-#include "RenderManager.h"
+#include "Window.h"
 #include <stdio.h>
 #include <math.h>
 
 
-Fontain::Fontain() : Drawable(){
+Fontain::Fontain(Vector3D startPosition) : Drawable(startPosition),  m_radius(5.0f){
     glCreateParticles();
     
     m_textures[0] = LoadTextureRAW( "particle_mask.raw", 256, 256);
     m_textures[1] = LoadTextureRAW( "particle.raw", 256, 256 );
 }
 
+Fontain::Fontain() : Fontain(Vector3D{0.0f, 0.0f, 0.0f}){
+    ;
+}
+
 Fontain::~Fontain(){
     ;
 }
 
-void Fontain::square (void) {
-    glBindTexture( GL_TEXTURE_2D, m_textures[0] );
-    glBegin (GL_QUADS);
-    glTexCoord2d(0.0,0.0);
-    glVertex2d(-1.0,-1.0);
-    glTexCoord2d(1.0,0.0);
-    glVertex2d(1.0,-1.0);
-    glTexCoord2d(1.0,1.0);
-    glVertex2d(1.0,1.0);
-    glTexCoord2d(0.0,1.0);
-    glVertex2d(-1.0,1.0);
-    glEnd();
-}
-
-void Fontain::glCreateParticles (void) {
+void Fontain::glCreateParticles () {
     int i;
-    for (i = 1; i < MAX_PARTICLES; i++)
+    for (i = 0; i < MAX_PARTICLES; i++)
     {
-        m_particles[i].Xpos = 0;
-        m_particles[i].Ypos = -5;
-        m_particles[i].Zpos = -5;
-        m_particles[i].Xmov = (((((((2 - 1 + 1) * rand()%11) + 1) - 1 + 1) *
-                              rand()%11) + 1) * 0.005) - (((((((2 - 1 + 1) * rand()%11) + 1) - 1 + 1
-                                                             ) * rand()%11) + 1) * 0.005);
-        m_particles[i].Zmov = (((((((2 - 1 + 1) * rand()%11) + 1) - 1 + 1) *
-                              rand()%11) + 1) * 0.005) - (((((((2 - 1 + 1) * rand()%11) + 1) - 1 + 1
-                                                             ) * rand()%11) + 1) * 0.005);
+        m_particles[i].Xpos = m_position.x; 
+        m_particles[i].Ypos = m_position.y - m_radius;
+        m_particles[i].Zpos = m_position.z - m_radius;
+        m_particles[i].Xmov = (((((((2 - 1 + 1) * rand()%11) + 1) - 1 + 1) * rand()%11) + 1) * 0.005) - (((((((2 - 1 + 1) * rand()%11) + 1) - 1 + 1) * rand()%11) + 1) * 0.005);
+        m_particles[i].Zmov = (((((((2 - 1 + 1) * rand()%11) + 1) - 1 + 1) * rand()%11) + 1) * 0.005) - (((((((2 - 1 + 1) * rand()%11) + 1) - 1 + 1) * rand()%11) + 1) * 0.005);
         m_particles[i].Red = 1;
         m_particles[i].Green = 1;
         m_particles[i].Blue = 1;
         m_particles[i].Scalez = 0.25;
         m_particles[i].Direction = 0;
-        m_particles[i].Acceleration = ((((((8 - 5 + 2) * rand()%11) + 5
-                                       ) - 1 + 1) * rand()%11) + 1) * 0.02;
+        m_particles[i].Acceleration = ((((((8 - 5 + 2) * rand() % 11) + 5) - 1 + 1) * rand() % 11) + 1) * 0.02;
         m_particles[i].Deceleration = 0.0025;
     }
 }
 
 void Fontain::glUpdateParticles(){
     int i;
-    for (i = 1; i < MAX_PARTICLES; i++)
-    {
+    for (i = 1; i < MAX_PARTICLES; i++) {
         
-        glColor3f (m_particles[i].Red, m_particles[i].Green,
-                   m_particles[i].Blue);
+        glColor3f (m_particles[i].Red, m_particles[i].Green, m_particles[i].Blue);
         
-        m_particles[i].Ypos = m_particles[i].Ypos + m_particles[i]
-        .Acceleration - m_particles[i].Deceleration;
-        m_particles[i].Deceleration = m_particles[i].Deceleration +
-        0.0025;
+        m_particles[i].Ypos = (m_particles[i].Ypos + m_particles[i].Acceleration) - (m_particles[i].Deceleration);
+        m_particles[i].Deceleration = m_particles[i].Deceleration + 0.0025;
         
         m_particles[i].Xpos = m_particles[i].Xpos + m_particles[i].Xmov;
         m_particles[i].Zpos = m_particles[i].Zpos + m_particles[i].Zmov;
         
-        m_particles[i].Direction = m_particles[i].Direction + ((((((int
-                                                                    )(0.5 - 0.1 + 0.1) * rand()%11) + 1) - 1 + 1) * rand()%11) + 1);
+        m_particles[i].Direction = m_particles[i].Direction + ((((((int)(0.5 - 0.1 + 0.1) * rand()%11) + 1) - 1 + 1) * rand() % 11) + 1);
         
         if (m_particles[i].Ypos < -5)
         {
-            m_particles[i].Xpos = 0;
-            m_particles[i].Ypos = -5;
-            m_particles[i].Zpos = -5;
+            m_particles[i].Xpos = m_position.x; 
+            m_particles[i].Ypos = m_position.y - m_radius;
+            m_particles[i].Zpos = m_position.z - m_radius;
             m_particles[i].Red = 1;
             m_particles[i].Green = 1;
             m_particles[i].Blue = 1;
             m_particles[i].Direction = 0;
-            m_particles[i].Acceleration = ((((((8 - 5 + 2) * rand()%11) + 5
-                                              ) - 1 + 1) * rand()%11) + 1) * 0.02;
+            m_particles[i].Acceleration = ((((((8 - 5 + 2) * rand()%11) + 5) - 1 + 1) * rand()%11) + 1) * 0.02;
             m_particles[i].Deceleration = 0.0025;
         }
         
@@ -103,6 +82,8 @@ void Fontain::update() {
 }
 
 void Fontain::draw() {
+    Drawable::draw();
+    
     int i;
     for (i = 1; i < MAX_PARTICLES; i++)
     {
@@ -151,39 +132,7 @@ void Fontain::draw() {
     }
 }
 
-/**
-void Fontain::display () {
-    glClearDepth (1);
-    glClearColor (0.0,0.0,0.0,1.0);
-    glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    glLoadIdentity();
-    glTranslatef (0,0,-10);
-    
-    glUpdateParticles();
-    glDrawParticles();
-    glutSwapBuffers();
-}
- **/
-
-
-/*
-int main (int argc, char **argv) {
-    glutInit (&argc, argv);
-    glutInitDisplayMode (GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH);
-    glutInitWindowSize (500, 500);
-    glutInitWindowPosition (100, 100);
-    glutCreateWindow ("A basic OpenGL Window");
-    init();
-    glutDisplayFunc (display);
-    glutIdleFunc (display);
-    glutReshapeFunc (reshape);
-    glutMainLoop ();
-    return 0;
-}
- */
-
 //function to load the RAW file
-
 GLuint Fontain::LoadTextureRAW( const char * filename, int width, int height )
 {
     GLuint texture;

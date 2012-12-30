@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "Camera::draw():Camera.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "(GLfloat [16])model">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "Window::Window(int, char**, Game):Window.cpp">
+      </ContextState>
+      <ContextState
+         contextName = "Ground::Ground(Vector3D):Ground.cpp">
+      </ContextState>
+      <ContextState
+         contextName = "Fontain::glCreateParticles():Fontain.cpp">
+      </ContextState>
+      <ContextState
+         contextName = "Game::init():Game.cpp">
+      </ContextState>
+      <ContextState
+         contextName = "Game::start():Game.cpp">
+      </ContextState>
+      <ContextState
+         contextName = "main:main.cpp">
+      </ContextState>
+      <ContextState
+         contextName = "Window::run(int):Window.cpp">
+      </ContextState>
+      <ContextState
+         contextName = "Game::addDrawable(Drawable*):Game.cpp">
+      </ContextState>
+      <ContextState
+         contextName = "Game::draw():Game.cpp">
+      </ContextState>
+      <ContextState
+         contextName = "Game::update():Game.cpp">
+      </ContextState>
+      <ContextState
+         contextName = "Drawable::translateX(float):Drawable.cpp">
+      </ContextState>
+      <ContextState
+         contextName = "Drawable::draw():Drawable.cpp">
+      </ContextState>
+      <ContextState
+         contextName = "Keyboard::specialKeyPressed(int, int, int):Keyboard.cpp">
+      </ContextState>
+      <ContextState
+         contextName = "Ground::draw():Ground.cpp">
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
