@@ -27,25 +27,31 @@ public:
     virtual void update();
     virtual void draw();
     
-    //Need to recalculate the direction-vector
     virtual void rotate(Vector3D angles);
-    virtual void translate(Vector3D direction);
     
     //Some movement methods
-    void forward(double distance);
-    void yaw(double val);
-    void pitch(double val);
-    void sideStep(double val);
+    void yaw(double val); //Around y - Counterclockwise = +
+    void pitch(double val); //Around x - Counterclockwise = +
+    void forward(double distance); //Along z - Forward = +
+    void sideStep(double val); //Along x - Right = +
     
+    //Set the movement speed
+    void setSpeed(double speed);
+    
+    //Some methods to let the camera lock on positions
     void lookAt(Drawable* d);
+    void lookAt(Vector3D* position);
+    void lookFree(); 
+    
 private:
     Vector3D m_up;
     CameraMode m_mode;
     Vector3D m_direction;
     Vector3D m_side;
+    double m_speed;
     
     Drawable* m_lookDrawable;
-    Vector3D m_lookPosition;
+    Vector3D* m_lookPosition;
     
     
 };

@@ -21,19 +21,18 @@ public:
     Drawable(Vector3D startPosition);
     
     virtual void update() = 0;
-    virtual void draw() = 0;
+    virtual void draw();
     
     void setPosition(Vector3D position);
     Vector3D getPosition();
 
-    //Need to be overridden when subclass needs additional calculations
 	virtual void rotate(Vector3D angles);
-    virtual void translate(Vector3D direction);
+    void translate(Vector3D direction);
     
     //Utility-methods which call rotate()
-    void rotateX(GLfloat angle); //+ >> Counterclockwise X
-	void rotateY(GLfloat angle); //+ >> Counterclockwise Y
-	void rotateZ(GLfloat angle); //+ >> Counterclockwise Z
+    void rotateX(GLfloat angle); //+ = Counterclockwise X
+	void rotateY(GLfloat angle); //+ = Counterclockwise Y
+	void rotateZ(GLfloat angle); //+ = Counterclockwise Z
     
     
     //Utility-methods which call translate()

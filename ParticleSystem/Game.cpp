@@ -17,10 +17,10 @@ Game::Game(Camera* camera) : m_camera(camera){
 }
 
 void Game::init(){
-    m_camera->setPosition(Vector3D(0.0f, 0.1f, 0.0f));
+    m_camera->setPosition(Vector3D(0.1f, 0.1f, 0.6f));
     
     //Drawable* fontain = (Drawable *)new Fontain(Vector3D(0.0f, 0.0f, -10.0f));
-    Drawable* ground = (Drawable *)new Ground(Vector3D(0.0f, 0.0f, -0.3f));
+    Drawable* ground = (Drawable *)new Ground(Vector3D(0.0f, 0.5f, 0.0f));
     
     //m_camera->lookAt(ground);
     
@@ -49,7 +49,6 @@ void Game::draw(){
     glMatrixMode(GL_MODELVIEW);
     
     for(std::vector<Drawable*>::size_type i = 0; i != m_drawables.size(); i++) {
-        //m_drawables[i]->RotateX(1.0f);
         m_drawables[i]->draw();
     }
 }

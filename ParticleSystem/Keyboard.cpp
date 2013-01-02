@@ -12,6 +12,8 @@
 Camera* Keyboard::m_camera;
 Game* Keyboard::m_game;
 Window* Keyboard::m_window;
+int Keyboard::m_last_mouse_x = 0;
+int Keyboard::m_last_mouse_y = 0;
 
 
 Keyboard::Keyboard(Game* game, Camera* camera, Window* window){
@@ -27,6 +29,7 @@ Keyboard::Keyboard(Game* game, Camera* camera, Window* window){
 void Keyboard::listen(){
     glutKeyboardFunc(&Keyboard::keyPressed);
     glutSpecialFunc(&Keyboard::specialKeyPressed);
+    glutPassiveMotionFunc(&Keyboard::mouseMoved);
 }
 
 void Keyboard::keyPressed( unsigned char key, int x, int y ) {
@@ -38,28 +41,20 @@ void Keyboard::keyPressed( unsigned char key, int x, int y ) {
             exit(0);
             break;
         case 'w':
-            //Rotate around X forward
-            Keyboard::m_camera->rotateX(ROTATION_SPEED);
+            //Move forward
+            Keyboard::m_camera->forward(0.1);
             break;
         case 's':
-            //Rotate around X backwards
-            Keyboard::m_camera->rotateX(-ROTATION_SPEED);
+            //Move backwards
+            Keyboard::m_camera->forward(-0.1);
             break;
         case 'a':
-            //Rotate around Y left
-            Keyboard::m_camera->rotateY(ROTATION_SPEED);
+            //Strafe left
+            Keyboard::m_camera->sideStep(-0.1);
             break;
         case 'd':
             //Rotate around Y right
-            Keyboard::m_camera->rotateY(-ROTATION_SPEED);
-            break;
-        case 'e':
-            //SideStep right
-            Keyboard::m_camera->yaw(-TRANSLATION_SPEED);
-            break;
-        case 'q':
-            //SideStep left
-            Keyboard::m_camera->yaw(TRANSLATION_SPEED);
+            Keyboard::m_camera->sideStep(0.1);
             break;
     }
     
@@ -68,29 +63,7 @@ void Keyboard::keyPressed( unsigned char key, int x, int y ) {
 
 void Keyboard::specialKeyPressed( int key, int x, int y ){
     usleep(20);
-    switch(key){
-        case GLUT_KEY_UP:
-            //move forward
-            //Keyboard::m_camera->translate(Vector3D(0.0f, 0.0f, TRANSLATION_SPEED));
-            Keyboard::m_camera->forward(TRANSLATION_SPEED);
-            break;
-			
-        case GLUT_KEY_DOWN:
-            //move backwards
-            //Keyboard::m_camera->translate(Vector3D(0.0f, 0.0f, -TRANSLATION_SPEED));
-            Keyboard::m_camera->forward(-TRANSLATION_SPEED);
-            break;
-            
-        case GLUT_KEY_RIGHT:
-            //Strafe right
-            Keyboard::m_camera->translate(Vector3D(-TRANSLATION_SPEED, 0.0f, 0.0f));
-            break;
-            
-        case GLUT_KEY_LEFT:
-            //Strafe left
-            Keyboard::m_camera->translate(Vector3D(TRANSLATION_SPEED, 0.0f, 0.0f));
-            break;
-        
+    switch(key){        
         case GLUT_KEY_PAGE_UP:
             Keyboard::m_camera->translate(Vector3D(0.0f,TRANSLATION_SPEED, 0.0f));
             break;
@@ -100,5 +73,18 @@ void Keyboard::specialKeyPressed( int key, int x, int y ){
         default:
             return;
     }
+}
+
+void Keyboard::mouseMoved(int x, int y) {
+    int diffX= x - Keyboard::m_last_mouse_x;
+    int diffY= y - Keyboard::m_last_mouse_y;
+    
+    Keyboard::m_last_mouse_x = x; 
+    Keyboard::m_last_mouse_y = y;
+    
+    Keyboard::m_camera->yaw(diffX);
+    //Keyboard::m_camera->pitch(diffY);
+    
+    //Keyboard::m_camera->rotate(Vector3D(diffY, diffX, 0.0));
 }
 

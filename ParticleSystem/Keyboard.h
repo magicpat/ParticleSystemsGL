@@ -24,10 +24,13 @@ public:
 private:
     static void keyPressed(unsigned char key, int x, int y);
 	static void specialKeyPressed(int key, int x, int y);
+    static void mouseMoved(int x, int y);
     
     static Camera* m_camera;
     static Game* m_game;
     static Window* m_window;
     
+    static int m_last_mouse_x;
+    static int m_last_mouse_y;
 };
 #endif
