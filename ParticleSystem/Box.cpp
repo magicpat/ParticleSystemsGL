@@ -1,44 +1,48 @@
 //
-//  Ground.cpp
+//  Box.cpp
 //  ParticleSystem
 //
 //  Created by Patrick Stapfer on 27.12.12.
 //  Copyright (c) 2012 Patrick Stapfer. All rights reserved.
 //
 
-#include "Ground.h"
+#include "Box.h"
 #include "gl_math.h"
 
 
-Ground::Ground() : Drawable(){
+Box::Box(Vector3D startPosition, GLfloat length, GLfloat width, GLfloat height) : Drawable(startPosition),
+                                                                                  m_length(length),
+                                                                                  m_width(width),
+                                                                                  m_height(height)
+{
+    ;
+}
+
+void Box::update(){
+    ;
+}
+
+
+void Box::draw(){
+    glPushMatrix();
     
-}
-
-Ground::Ground(Vector3D startPosition) : Drawable(startPosition){
-    ;
-}
-
-void Ground::update(){
-    ;
-}
-
-void Ground::draw(){
     Drawable::draw();
+    
+    // Turn on wireframe mode
+    glPolygonMode(GL_FRONT, GL_FILL);
+    glPolygonMode(GL_BACK, GL_FILL);
     
     glBegin(GL_QUADS);
     
-    GLfloat length = 0.5f;
-    GLfloat height = 0.1f;
-    
     const GLfloat points[8][3] = {
-        {0.0f,   0.0f,   0.0f},      //P0
-        {length, 0.0f,   0.0f},      //P1
-        {length, 0.0f,   -length},   //P2
-        {0.0f,   0.0f,   -length},   //P3
-        {0.0f,   height, 0.0f},      //P4
-        {length, height, 0.0f},      //P5
-        {length, height, -length},   //P6
-        {0.0f,   height, -length}    //P7
+        {0.0f,     0.0f,    0.0f},       //P0
+        {m_length, 0.0f,    0.0f},       //P1
+        {m_length, 0.0f,    -m_width},   //P2
+        {0.0f,     0.0f,    -m_width},   //P3
+        {0.0f,     m_height, 0.0f},      //P4
+        {m_length, m_height, 0.0f},      //P5
+        {m_length, m_height, -m_width},  //P6
+        {0.0f,     m_height, -m_width}   //P7
     };
 
     //Unten
@@ -97,5 +101,11 @@ void Ground::draw(){
     
     
     glEnd();
-
+    
+    // Turn off wireframe mode
+    glPolygonMode(GL_FRONT, GL_FILL);
+    glPolygonMode(GL_BACK, GL_FILL);
+    
+    glPopMatrix();
+    
 }

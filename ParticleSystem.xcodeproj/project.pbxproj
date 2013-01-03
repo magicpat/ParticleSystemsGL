@@ -18,7 +18,7 @@
 		4DB6812F168CB32500C7462D /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4DB6812D168CB32500C7462D /* Game.cpp */; };
 		4DB68132168CE6A800C7462D /* Drawable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4DB68131168CE6A800C7462D /* Drawable.cpp */; };
 		4DB68136168CE77C00C7462D /* gl_math.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4DB68134168CE77C00C7462D /* gl_math.cpp */; };
-		4DB6813C168CFE3C00C7462D /* Ground.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4DB6813A168CFE3C00C7462D /* Ground.cpp */; };
+		4DB6813C168CFE3C00C7462D /* Box.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4DB6813A168CFE3C00C7462D /* Box.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -56,8 +56,8 @@
 		4DB68131168CE6A800C7462D /* Drawable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Drawable.cpp; sourceTree = "<group>"; };
 		4DB68134168CE77C00C7462D /* gl_math.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gl_math.cpp; sourceTree = "<group>"; };
 		4DB68137168CE88400C7462D /* gl_math.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gl_math.h; sourceTree = "<group>"; };
-		4DB6813A168CFE3C00C7462D /* Ground.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Ground.cpp; sourceTree = "<group>"; };
-		4DB6813B168CFE3C00C7462D /* Ground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ground.h; sourceTree = "<group>"; };
+		4DB6813A168CFE3C00C7462D /* Box.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Box.cpp; sourceTree = "<group>"; };
+		4DB6813B168CFE3C00C7462D /* Box.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Box.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,7 +128,6 @@
 			isa = PBXGroup;
 			children = (
 				4DB68139168CFE1F00C7462D /* camera */,
-				4D1F52B3168B4FDF00EB0BCB /* Window.cpp */,
 				4DB68130168CD91B00C7462D /* Window.h */,
 				4DB68131168CE6A800C7462D /* Drawable.cpp */,
 				4D1F52CB168B87D700EB0BCB /* Drawable.h */,
@@ -166,8 +165,8 @@
 		4DB68138168CFE0C00C7462D /* models */ = {
 			isa = PBXGroup;
 			children = (
-				4DB6813A168CFE3C00C7462D /* Ground.cpp */,
-				4DB6813B168CFE3C00C7462D /* Ground.h */,
+				4DB6813A168CFE3C00C7462D /* Box.cpp */,
+				4DB6813B168CFE3C00C7462D /* Box.h */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -177,6 +176,7 @@
 			children = (
 				4DB68123168CA54B00C7462D /* Camera.cpp */,
 				4DB68124168CA54B00C7462D /* Camera.h */,
+				4D1F52B3168B4FDF00EB0BCB /* Window.cpp */,
 			);
 			name = camera;
 			sourceTree = "<group>";
@@ -240,7 +240,7 @@
 				4DB6812F168CB32500C7462D /* Game.cpp in Sources */,
 				4DB68132168CE6A800C7462D /* Drawable.cpp in Sources */,
 				4DB68136168CE77C00C7462D /* gl_math.cpp in Sources */,
-				4DB6813C168CFE3C00C7462D /* Ground.cpp in Sources */,
+				4DB6813C168CFE3C00C7462D /* Box.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

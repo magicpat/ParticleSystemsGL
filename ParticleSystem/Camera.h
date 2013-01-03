@@ -13,6 +13,8 @@
 #include "gl_math.h"
 #include "Drawable.h"
 
+
+
 enum CameraMode
 {
     FREE,
@@ -27,6 +29,7 @@ public:
     virtual void update();
     virtual void draw();
     
+    virtual void translate(Vector3D movement);
     virtual void rotate(Vector3D angles);
     
     //Some movement methods
@@ -34,6 +37,7 @@ public:
     void pitch(double val); //Around x - Counterclockwise = +
     void forward(double distance); //Along z - Forward = +
     void sideStep(double val); //Along x - Right = +
+    void strafe(double val); //Along x - Right = +
     
     //Set the movement speed
     void setSpeed(double speed);
@@ -41,7 +45,7 @@ public:
     //Some methods to let the camera lock on positions
     void lookAt(Drawable* d);
     void lookAt(Vector3D* position);
-    void lookFree(); 
+    void lookFree();
     
 private:
     Vector3D m_up;
@@ -49,6 +53,10 @@ private:
     Vector3D m_direction;
     Vector3D m_side;
     double m_speed;
+    
+    //For the bounding-sphere of the view
+    Vector3D m_center;
+    GLfloat m_diameter;
     
     Drawable* m_lookDrawable;
     Vector3D* m_lookPosition;

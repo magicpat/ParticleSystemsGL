@@ -50,11 +50,21 @@ void Keyboard::keyPressed( unsigned char key, int x, int y ) {
             break;
         case 'a':
             //Strafe left
-            Keyboard::m_camera->sideStep(-0.1);
+            Keyboard::m_camera->sideStep(0.1);
+            //Keyboard::m_camera->strafe(-0.1);
             break;
         case 'd':
-            //Rotate around Y right
-            Keyboard::m_camera->sideStep(0.1);
+            //Strafe right
+            Keyboard::m_camera->sideStep(-0.1);
+            //Keyboard::m_camera->strafe(0.1);
+            break;
+        case 'e':
+            //Turn right
+            Keyboard::m_camera->yaw(-1.5);
+            break;
+        case 'q':
+            //Turn left
+            Keyboard::m_camera->yaw(1.5);
             break;
     }
     
@@ -64,10 +74,10 @@ void Keyboard::keyPressed( unsigned char key, int x, int y ) {
 void Keyboard::specialKeyPressed( int key, int x, int y ){
     usleep(20);
     switch(key){        
-        case GLUT_KEY_PAGE_UP:
+        case GLUT_KEY_UP:
             Keyboard::m_camera->translate(Vector3D(0.0f,TRANSLATION_SPEED, 0.0f));
             break;
-        case GLUT_KEY_PAGE_DOWN:
+        case GLUT_KEY_DOWN:
             Keyboard::m_camera->translate(Vector3D(0.0f,-TRANSLATION_SPEED, 0.0f));
             break;
         default:
@@ -82,7 +92,7 @@ void Keyboard::mouseMoved(int x, int y) {
     Keyboard::m_last_mouse_x = x; 
     Keyboard::m_last_mouse_y = y;
     
-    Keyboard::m_camera->yaw(diffX);
+    //Keyboard::m_camera->yaw(-diffX);
     //Keyboard::m_camera->pitch(diffY);
     
     //Keyboard::m_camera->rotate(Vector3D(diffY, diffX, 0.0));

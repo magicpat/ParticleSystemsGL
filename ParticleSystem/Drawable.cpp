@@ -32,15 +32,16 @@ Vector3D Drawable::getPosition()
 
 void Drawable::draw()
 {
-    glPushMatrix();
-    glLoadIdentity();
+    //glPushMatrix();
+    //glLoadIdentity();
     glTranslatef(m_position.x, m_position.y, m_position.z); //Move back to the actual position
     glRotatef(m_rotation.x , 1.0, 0.0, 0.0);
     glRotatef(m_rotation.y , 0.0, 1.0, 0.0);
     glRotatef(m_rotation.z , 0.0, 0.0, 1.0);
     glTranslatef(0.0f, 0.0f, 0.0f); //Move to origin
-    glPopMatrix();
+    //glPopMatrix();
 }
+
 
 void Drawable::translate (Vector3D direction)
 {

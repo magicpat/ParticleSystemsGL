@@ -60,10 +60,6 @@ Window::Window(int argc, char* args[], Game* game, Camera* camera): m_window(0){
     //Set the run-callback for the mainloop
     glutTimerFunc( 1000 / Window::SCREEN_FPS, Window::run, 0 );
 
-    
-    
-    
-    
 }
 
 bool Window::destroy(){
@@ -77,24 +73,18 @@ bool Window::destroy(){
 
 void Window::render()
 {
-    gluPerspective (90, SCREEN_WIDTH / SCREEN_HEIGHT, 0.1, 100.0);
     
-    glFrustum( -SCREEN_WIDTH,
-              SCREEN_WIDTH,
-              -SCREEN_HEIGHT,
-              SCREEN_HEIGHT,
-              0.0005f,
-              SCREEN_HEIGHT);
     
     //Clear and set the image to render
     glClearDepth (1);
     glClearColor (0.0,0.0,0.0,1.0);
     glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
-    //Reset Worldmatrix to (0,0,0)
+    //Initialize Modelview-Matrix
+    glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
     
-    //Reposition the camera perspective
+    //Transform the Modelview-Matrix to the camera-view
     Window::m_camera->draw();
     
     //Call to the game-logic to draw it's drawables

@@ -82,7 +82,7 @@ void Fontain::update() {
 }
 
 void Fontain::draw() {
-    Drawable::draw();
+    //Drawable::draw();
     
     int i;
     for (i = 1; i < MAX_PARTICLES; i++)
@@ -92,7 +92,7 @@ void Fontain::draw() {
         glTranslatef (m_particles[i].Xpos, m_particles[i].Ypos, m_particles[i].Zpos);
         glRotatef (m_particles[i].Direction - 90, 0, 0, 1);
         
-        glScalef (m_particles[i].Scalez, m_particles[i].Scalez, m_particles[i].Scalez);
+        glScalef(m_particles[i].Scalez, m_particles[i].Scalez, m_particles[i].Scalez);
         
         glDisable (GL_DEPTH_TEST);
         glEnable (GL_BLEND);
@@ -101,28 +101,28 @@ void Fontain::draw() {
         glBindTexture (GL_TEXTURE_2D, m_textures[0]);
         
         glBegin (GL_QUADS);
-        glTexCoord2d (0, 0);
-        glVertex3f (-1, -1, 0);
-        glTexCoord2d (1, 0);
-        glVertex3f (1, -1, 0);
-        glTexCoord2d (1, 1);
-        glVertex3f (1, 1, 0);
-        glTexCoord2d (0, 1);
-        glVertex3f (-1, 1, 0);
+            glTexCoord2d (0, 0);
+            glVertex3f (-1, -1, 0);
+            glTexCoord2d (1, 0);
+            glVertex3f (1, -1, 0);
+            glTexCoord2d (1, 1);
+            glVertex3f (1, 1, 0);
+            glTexCoord2d (0, 1);
+            glVertex3f (-1, 1, 0);
         glEnd();
         
         glBlendFunc (GL_ONE, GL_ONE);
         glBindTexture (GL_TEXTURE_2D, m_textures[1]);
         
         glBegin (GL_QUADS);
-        glTexCoord2d (0, 0);
-        glVertex3f (-1, -1, 0);
-        glTexCoord2d (1, 0);
-        glVertex3f (1, -1, 0);
-        glTexCoord2d (1, 1);
-        glVertex3f (1, 1, 0);
-        glTexCoord2d (0, 1);
-        glVertex3f (-1, 1, 0);
+            glTexCoord2d (0, 0);
+            glVertex3f (-1, -1, 0);
+            glTexCoord2d (1, 0);
+            glVertex3f (1, -1, 0);
+            glTexCoord2d (1, 1);
+            glVertex3f (1, 1, 0);
+            glTexCoord2d (0, 1);
+            glVertex3f (-1, 1, 0);
         glEnd();
         
         glEnable(GL_DEPTH_TEST);
