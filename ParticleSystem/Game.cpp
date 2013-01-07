@@ -25,7 +25,7 @@ void Game::init(){
     
     m_camera->setPosition(Vector3D(roomCenter.x, roomCenter.y + 7.0, roomCenter.z + 10.0));
     
-    //Drawable* fontain = (Drawable *)new Fontain(Vector3D(0.0f, 0.0f, -10.0f));
+    //Drawable* fontain = (Drawable *)new Fontain(roomCenter);
     Drawable* obstacle = new Box(roomCenter, 1.0, 1.0, 1.0);
     Drawable* room = new Box(Vector3D(0.0f, 0.0f, 0.0f), roomLength, roomWidth, roomHeight);
     

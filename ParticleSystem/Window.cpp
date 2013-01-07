@@ -1,5 +1,5 @@
 //
-//  LUtil.cpp
+//  Window.cpp
 //  ParticleSystem
 //
 //  Created by Patrick Stapfer on 26.12.12.
@@ -11,6 +11,9 @@
 
 Game* Window::m_game;
 Camera* Window::m_camera;
+
+int lastDelta;
+int currentDelta;
 
 Window::Window(int argc, char* args[], Game* game, Camera* camera): m_window(0){
     Window::m_game = game;
@@ -52,7 +55,7 @@ Window::Window(int argc, char* args[], Game* game, Camera* camera): m_window(0){
     }
     
     //Set rendering function
-    glutDisplayFunc( Window::render );
+    glutDisplayFunc( Window::display );
     
     //Set reshape callback
     glutReshapeFunc (reshape);
@@ -70,9 +73,21 @@ bool Window::destroy(){
     return false;
 }
 
+void Window::reshape (int width, int height) {
+    glViewport (0, 0, (GLsizei)width, (GLsizei)height);
+    glMatrixMode (GL_PROJECTION);
+    glLoadIdentity ();
+    gluPerspective (60, (GLfloat)width / (GLfloat)height, 1.0, 100.0);
+    glMatrixMode (GL_MODELVIEW);
+}
 
-void Window::render()
-{
+void Window::display( ){
+    // Get the time when the previous frame was rendered
+    lastDelta = currentDelta;
+    
+    // Get the current time (in milliseconds) and calculate the elapsed time
+    currentDelta = glutGet(GLUT_ELAPSED_TIME);
+    int delta = currentDelta - lastDelta;
     
     
     //Clear and set the image to render
@@ -92,19 +107,10 @@ void Window::render()
     
     //Update screen
     glutSwapBuffers();
-}   
-
-void Window::reshape (int width, int height) {
-    glViewport (0, 0, (GLsizei)width, (GLsizei)height);
-    glMatrixMode (GL_PROJECTION);
-    glLoadIdentity ();
-    gluPerspective (60, (GLfloat)width / (GLfloat)height, 1.0, 100.0);
-    glMatrixMode (GL_MODELVIEW);
 }
 
-void Window::run( int val ){    
-    //Frame logic
-    Window::render();
+void Window::run(int val){
+    Window::display();
     
     //Run frame one more time
     glutTimerFunc( 1000 / Window::SCREEN_FPS, Window::run, val );

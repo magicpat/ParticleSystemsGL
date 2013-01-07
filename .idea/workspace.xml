@@ -3,7 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="54e722a0-c6c7-4310-beed-4647b83e0f01" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ParticleSystem.xcodeproj/project.xcworkspace/xcuserdata/ps.xcuserdatad/UserInterfaceState.xcuserstate" afterPath="$PROJECT_DIR$/ParticleSystem.xcodeproj/project.xcworkspace/xcuserdata/ps.xcuserdatad/UserInterfaceState.xcuserstate" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ParticleSystem.xcodeproj/xcuserdata/ps.xcuserdatad/xcdebugger/Breakpoints.xcbkptlist" afterPath="$PROJECT_DIR$/ParticleSystem.xcodeproj/xcuserdata/ps.xcuserdatad/xcdebugger/Breakpoints.xcbkptlist" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ParticleSystem.xcodeproj/project.pbxproj" afterPath="$PROJECT_DIR$/ParticleSystem.xcodeproj/project.pbxproj" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ParticleSystem/Game.cpp" afterPath="$PROJECT_DIR$/ParticleSystem/Game.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ParticleSystem/Window.cpp" afterPath="$PROJECT_DIR$/ParticleSystem/Window.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ParticleSystem/Window.h" afterPath="$PROJECT_DIR$/ParticleSystem/Window.h" />
     </list>
     <ignored path="ParticleSystem.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -35,7 +38,7 @@
       <file leaf-file-name="Drawable.h" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ParticleSystem/Drawable.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="38" column="13" selection-start="948" selection-end="948" vertical-scroll-proportion="0.0">
+            <state line="38" column="13" selection-start="907" selection-end="907" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -44,16 +47,7 @@
       <file leaf-file-name="Drawable.cpp" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ParticleSystem/Drawable.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="40" column="0" selection-start="831" selection-end="831" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Ground.cpp" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ParticleSystem/Ground.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="80" column="9" selection-start="1737" selection-end="1737" vertical-scroll-proportion="0.0">
+            <state line="40" column="0" selection-start="799" selection-end="799" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -68,10 +62,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.cpp" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="main.cpp" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ParticleSystem/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="50" selection-start="438" selection-end="438" vertical-scroll-proportion="0.27331188">
+            <state line="32" column="73" selection-start="837" selection-end="837" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -95,10 +89,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Window.cpp" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Window.cpp" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ParticleSystem/Window.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="12" selection-start="413" selection-end="421" vertical-scroll-proportion="0.0">
+            <state line="14" column="94" selection-start="254" selection-end="254" vertical-scroll-proportion="0.21594684">
               <folding />
             </state>
           </provider>
@@ -107,7 +101,7 @@
       <file leaf-file-name="Game.cpp" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ParticleSystem/Game.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="22" selection-start="487" selection-end="487" vertical-scroll-proportion="0.0">
+            <state line="22" column="22" selection-start="411" selection-end="411" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -138,8 +132,8 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="y" value="22" />
-    <option name="width" value="1920" />
-    <option name="height" value="1054" />
+    <option name="width" value="1680" />
+    <option name="height" value="1024" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -200,12 +194,12 @@
   </component>
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="recentsLimit" value="5" />
     <property name="options.lastSelected" value="preferences.sourceCode" />
+    <property name="recentsLimit" value="5" />
     <property name="restartRequiresConfirmation" value="true" />
     <property name="FullScreen" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RunManager" selected="Application.ParticleSystem">
     <configuration default="true" type="OCUnitRunConfiguration" factoryName="OCUnit" PASS_PARENT_ENVS="FALSE">
@@ -256,13 +250,13 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1920" height="1054" extended-state="6" />
-    <editor active="false" />
+    <frame x="0" y="22" width="1680" height="1024" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14549288" sideWeight="0.79270834" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14544357" sideWeight="0.79270834" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -333,6 +327,20 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/ParticleSystem/Drawable.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="38" column="13" selection-start="907" selection-end="907" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ParticleSystem/Fontain.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="89" column="8" selection-start="2942" selection-end="2957" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/ParticleSystem/Fontain.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state line="89" column="8" selection-start="2942" selection-end="2957" vertical-scroll-proportion="0.0">
@@ -343,13 +351,6 @@
     <entry file="file://$PROJECT_DIR$/ParticleSystem/LOpenGL.h">
       <provider selected="true" editor-type-id="text-editor">
         <state line="14" column="22" selection-start="267" selection-end="267" vertical-scroll-proportion="0.22479564">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ParticleSystem/Ground.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -391,7 +392,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ParticleSystem/Game.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="22" selection-start="487" selection-end="487" vertical-scroll-proportion="0.0">
+        <state line="22" column="22" selection-start="411" selection-end="411" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -403,23 +404,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ParticleSystem/Ground.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="80" column="9" selection-start="1737" selection-end="1737" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ParticleSystem/Drawable.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="13" selection-start="948" selection-end="948" vertical-scroll-proportion="0.0">
+        <state line="38" column="13" selection-start="907" selection-end="907" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ParticleSystem/Drawable.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="0" selection-start="831" selection-end="831" vertical-scroll-proportion="0.0">
+        <state line="40" column="0" selection-start="799" selection-end="799" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -431,16 +425,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ParticleSystem/Window.cpp">
+    <entry file="file://$PROJECT_DIR$/ParticleSystem/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="12" selection-start="413" selection-end="421" vertical-scroll-proportion="0.0">
+        <state line="32" column="73" selection-start="837" selection-end="837" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ParticleSystem/main.cpp">
+    <entry file="file://$PROJECT_DIR$/ParticleSystem/Window.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="50" selection-start="438" selection-end="438" vertical-scroll-proportion="0.27331188">
+        <state line="14" column="94" selection-start="254" selection-end="254" vertical-scroll-proportion="0.21594684">
           <folding />
         </state>
       </provider>

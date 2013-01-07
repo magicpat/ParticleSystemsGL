@@ -1,5 +1,5 @@
 //
-//  LUtil.h
+//  Window.h
 //  ParticleSystem
 //
 //  Created by Patrick Stapfer on 26.12.12.
@@ -13,6 +13,10 @@
 #include "Game.h"
 #include <vector>
 
+#define MAXIMUM_FRAME_RATE 120
+#define MINIMUM_FRAME_RATE 15
+#define UPDATE_INTERVAL (1.0 / MAXIMUM_FRAME_RATE)
+#define MAX_CYCLES_PER_FRAME (MAXIMUM_FRAME_RATE / MINIMUM_FRAME_RATE)
 
 class Window{
 
@@ -23,7 +27,6 @@ public:
     static const int SCREEN_FPS = 60;
     
     //Static methods
-    static void render(); //TODO: Should definitaley be a tick-counter here...
     static void reshape(int width, int height);
     
     //Instance methods
@@ -31,7 +34,8 @@ public:
     bool destroy();
     
 private:
-    static void run( int val );
+    static void display();
+    static void run(int val);
     
     //Static variables to be able to access them in the OpenGL-Callbacks, defined above
     static Game* m_game;

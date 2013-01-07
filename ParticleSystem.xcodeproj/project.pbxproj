@@ -128,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				4DB68139168CFE1F00C7462D /* camera */,
+				4D1F52B3168B4FDF00EB0BCB /* Window.cpp */,
 				4DB68130168CD91B00C7462D /* Window.h */,
 				4DB68131168CE6A800C7462D /* Drawable.cpp */,
 				4D1F52CB168B87D700EB0BCB /* Drawable.h */,
@@ -176,7 +177,6 @@
 			children = (
 				4DB68123168CA54B00C7462D /* Camera.cpp */,
 				4DB68124168CA54B00C7462D /* Camera.h */,
-				4D1F52B3168B4FDF00EB0BCB /* Window.cpp */,
 			);
 			name = camera;
 			sourceTree = "<group>";
