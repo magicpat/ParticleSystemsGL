@@ -47,7 +47,8 @@ void Fontain::glCreateParticles () {
     }
 }
 
-void Fontain::glUpdateParticles(){
+void Fontain::glUpdateParticles(int delta){
+    //TODO: INVOLVE delta
     int i;
     for (i = 1; i < MAX_PARTICLES; i++) {
         
@@ -77,8 +78,8 @@ void Fontain::glUpdateParticles(){
     }
 }
 
-void Fontain::update() {
-    glUpdateParticles();
+void Fontain::update(int delta) {
+    glUpdateParticles(delta);
 }
 
 void Fontain::draw() {

@@ -10,12 +10,6 @@
 #include "math.h"
 #include <cmath>
 
-Vector3D::Vector3D() : x(0.0f), y(0.0f), z(0.0f){
-    ;
-}
-
-Vector3D::Vector3D(GLfloat x, GLfloat y, GLfloat z ) : x(x), y(y), z(z){
-}
 
 Vector3D addVector3D (const Vector3D v1, const Vector3D v2)
 {
@@ -94,4 +88,151 @@ void anglesToAxis(const Vector3D &angles, Vector3D &side, Vector3D &up, Vector3D
     forward.x = sy*cz + cy*sx*sz;
     forward.y = sy*sz - cy*sx*cz;
     forward.z = cy*cx;
+}
+
+/******************************************
+ Vector3D
+ *****************************************/
+Vector3D::Vector3D() : x(0.0f), y(0.0f), z(0.0f){
+    ;
+}
+
+
+Vector3D::Vector3D(GLfloat x, GLfloat y, GLfloat z ) : x(x), y(y), z(z){
+}
+
+Vector3D::Vector3D(const Vector3D& v) : x(v.x), y(v.y), z(v.z)
+{
+    ;
+}
+
+double Vector3D::length() const
+{
+    return sqrt((x * x) + (y * y) + (z * z));
+}
+
+float Vector3D::dot(const Vector3D& other) const
+{
+    return x*other.x + y*other.y + z*other.z;
+}
+
+Vector3D Vector3D::normal() const
+{
+    Vector3D v = Vector3D(*this);
+    v.normalize();
+    return v;
+}
+
+Vector3D Vector3D::cross(const Vector3D& other) const
+{
+    Vector3D result;
+    result.x = y * other.z - z * other.y;
+    result.y = z * other.x - x * other.z;
+    result.z = x * other.y - y * other.x;
+    result.normalize();
+    
+    return result;
+}
+
+void Vector3D::normalize()
+{
+    double length = this->length();
+    
+    if(length != 0)
+    {
+        x /= length;
+        y /= length;
+        z /= length;
+    }
+}
+
+Vector3D Vector3D::operator+(const Vector3D& other) const
+{
+    return Vector3D(x + other.x, y + other.y, z + other.z);
+}
+
+Vector3D Vector3D::operator-(const Vector3D& other) const
+{
+    return Vector3D(x - other.x, y - other.y, z - other.z);
+}
+
+Vector3D Vector3D::operator-() const
+{
+    return Vector3D(x * -1, y * -1, z * -1);
+}
+
+Vector3D Vector3D::operator*(const GLfloat scalar) const
+{
+    return Vector3D(x*scalar, y*scalar, z*scalar);
+}
+
+Vector3D& Vector3D::operator=(const Vector3D& other)
+{
+    if(this != &other)
+    {
+        x = other.x;
+        y = other.y;
+        z = other.z;
+    }
+    return *this;
+}
+
+Vector3D& Vector3D::operator+=(const Vector3D& other)
+{
+    if(this != &other)
+    {
+        x += other.x;
+        y += other.y;
+        z += other.z;
+    }
+    return *this;
+}
+
+Vector3D& Vector3D::operator-=(const Vector3D& other)
+{
+    if(this != &other)
+    {
+        x -= other.x;
+        y -= other.y;
+        z -= other.z;
+    }
+    return *this;
+}
+
+/******************************************
+ Vector2D
+ *****************************************/
+Vector2D::Vector2D() : x(0.0), y(0.0)
+{
+    ;
+}
+
+Vector2D::Vector2D(GLfloat x, GLfloat y) : x(x), y(y)
+{
+    ;
+}
+
+Vector2D Vector2D::operator-(const Vector2D& other) const
+{
+    return Vector2D(x + other.x, y + other.y);
+}
+
+Vector2D Vector2D::operator+(const Vector2D& other) const
+{
+    return Vector2D(x - other.x, y - other.y);
+}
+
+Vector2D Vector2D::operator*(const GLfloat scalar) const
+{
+    return Vector2D(x * scalar, y * scalar);
+}
+
+Vector2D& Vector2D::operator=(const Vector2D& other)
+{
+    if(this != &other)
+    {
+        x = other.x;
+        y = other.y;
+    }
+    return *this;
 }

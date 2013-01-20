@@ -97,10 +97,9 @@
 				4DB6812B168CB24E00C7462D /* gamelogic */,
 				4DB68127168CACD900C7462D /* input */,
 				4D1F52C9168B87B500EB0BCB /* rendering */,
-				4D1F52B9168B658600EB0BCB /* particles */,
 				4D1F52A2168B4DBF00EB0BCB /* main.cpp */,
-				4D1F52B2168B4F6F00EB0BCB /* LOpenGL.h */,
 				4DB68138168CFE0C00C7462D /* models */,
+				4D1F52B2168B4F6F00EB0BCB /* LOpenGL.h */,
 			);
 			path = ParticleSystem;
 			sourceTree = "<group>";
@@ -115,13 +114,13 @@
 			path = ParticleSystem;
 			sourceTree = "<group>";
 		};
-		4D1F52B9168B658600EB0BCB /* particles */ = {
+		4D1F52B9168B658600EB0BCB /* particlesystems */ = {
 			isa = PBXGroup;
 			children = (
 				4D1F52BA168B65BC00EB0BCB /* Fontain.cpp */,
 				4DB6812C168CB27600C7462D /* Fontain.h */,
 			);
-			name = particles;
+			name = particlesystems;
 			sourceTree = "<group>";
 		};
 		4D1F52C9168B87B500EB0BCB /* rendering */ = {
@@ -166,6 +165,7 @@
 		4DB68138168CFE0C00C7462D /* models */ = {
 			isa = PBXGroup;
 			children = (
+				4D1F52B9168B658600EB0BCB /* particlesystems */,
 				4DB6813A168CFE3C00C7462D /* Box.cpp */,
 				4DB6813B168CFE3C00C7462D /* Box.h */,
 			);

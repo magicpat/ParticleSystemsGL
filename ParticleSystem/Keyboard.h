@@ -13,8 +13,14 @@
 #include "Game.h"
 #include "Window.h"
 
-#define ROTATION_SPEED 2.0f
-#define TRANSLATION_SPEED 0.05f
+#define KEY_ESC 27
+#define KEY_SPACE 32
+#define KEY_CTRL_W 23
+#define KEY_CTRL_A 1
+#define KEY_CTRL_S 19
+#define KEY_CTRL_D 4
+#define KEY_CTRL_E 5
+#define KEY_CTRL_Q 17
 
 class Keyboard {
 public:
@@ -22,15 +28,14 @@ public:
     void listen();
     
 private:
-    static void keyPressed(unsigned char key, int x, int y);
-	static void specialKeyPressed(int key, int x, int y);
+    static void keyToggled(unsigned char key, int x, int y);
+	static void specialKeyToggled(int key, int x, int y);
     static void mouseMoved(int x, int y);
     
     static Camera* m_camera;
     static Game* m_game;
     static Window* m_window;
     
-    static int m_last_mouse_x;
-    static int m_last_mouse_y;
+    static Vector2D m_last_mouse_position;
 };
 #endif

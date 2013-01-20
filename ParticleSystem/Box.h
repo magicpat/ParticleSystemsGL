@@ -15,7 +15,7 @@ class Box : public Drawable{
 public:
     Box(Vector3D startPosition, GLfloat length, GLfloat width, GLfloat height);
     
-    virtual void update();
+    virtual void update(int delta);
     virtual void draw();
     
 private:

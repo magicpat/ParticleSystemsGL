@@ -89,6 +89,9 @@ void Window::display( ){
     currentDelta = glutGet(GLUT_ELAPSED_TIME);
     int delta = currentDelta - lastDelta;
     
+    //Update game
+    Window::m_game->update(delta);
+    Window::m_camera->update(delta);
     
     //Clear and set the image to render
     glClearDepth (1);

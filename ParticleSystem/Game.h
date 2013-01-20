@@ -19,8 +19,9 @@ public:
     void start();
     
     Game(Camera* camera);
+    
     //Methods derrived from Drawable
-    virtual void update();
+    virtual void update(int delta);
     virtual void draw();
     
     void addDrawable(Drawable* d);

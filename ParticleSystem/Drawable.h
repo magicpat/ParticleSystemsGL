@@ -20,7 +20,7 @@ public:
     
     Drawable(Vector3D startPosition);
     
-    virtual void update() = 0;
+    virtual void update(int delta) = 0;
     virtual void draw() = 0;
     
     void setPosition(Vector3D position);

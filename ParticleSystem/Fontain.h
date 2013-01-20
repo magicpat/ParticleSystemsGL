@@ -38,7 +38,8 @@ public:
     Fontain();
     ~Fontain();
     
-    virtual void update();
+    //Overridden methods from Drawable
+    virtual void update(int delta);
     virtual void draw();
     
 private:
@@ -46,7 +47,7 @@ private:
     void FreeTexture( GLuint texturez );
     void square ();
     void glCreateParticles();
-    void glUpdateParticles();
+    void glUpdateParticles(int delta);
     
     GLfloat m_textures[10];
     GLfloat m_radius;

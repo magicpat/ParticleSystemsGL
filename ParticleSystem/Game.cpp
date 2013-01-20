@@ -29,7 +29,7 @@ void Game::init(){
     Drawable* obstacle = new Box(roomCenter, 1.0, 1.0, 1.0);
     Drawable* room = new Box(Vector3D(0.0f, 0.0f, 0.0f), roomLength, roomWidth, roomHeight);
     
-    m_camera->lookAt(obstacle);
+    //m_camera->lookAt(obstacle);
     
     //this->addDrawable(fontain);
     this->addDrawable(obstacle);
@@ -44,15 +44,13 @@ void Game::processKeyboardInput(const unsigned char c){
     ;
 }
 
-void Game::update(){
+void Game::update(int delta){
     for(std::vector<Drawable*>::size_type i = 0; i != this->m_drawables.size(); i++) {
-        this->m_drawables[i]->update();
+        this->m_drawables[i]->update(delta);
     }
 }
 
 void Game::draw(){
-    this->update();
-    
     //Set to MODELVIEW to ensure the right rendering mode
     glMatrixMode(GL_MODELVIEW);
     

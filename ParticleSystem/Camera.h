@@ -12,6 +12,7 @@
 #include "LOpenGL.h"
 #include "gl_math.h"
 #include "Drawable.h"
+#include <map>
 
 
 
@@ -22,22 +23,36 @@ enum CameraMode
     LOOK_AT_POSITION
 };
 
-class Camera : public Drawable{
+enum CameraMovement
+{
+    MOVE_LEFT      = 1 << 0, 
+    MOVE_RIGHT     = 1 << 1,
+    MOVE_FORWARD   = 1 << 2,
+    MOVE_BACKWARDS = 1 << 3,
+    TURN_LEFT      = 1 << 4,
+    TURN_RIGHT     = 1 << 5,
+    TURN_UP        = 1 << 6,
+    TURN_DOWN      = 1 << 7,
+    RISE_UP        = 1 << 8,
+    LOWER_DOWN     = 1 << 9
+};
+
+class Camera : public Drawable {
 public:
 	Camera();	
     
-    virtual void update();
+    virtual void update(int delta);
     virtual void draw();
     
-    virtual void translate(Vector3D movement);
-    virtual void rotate(Vector3D angles);
+    //Sets the next mouse-movement to be used in the calculation
+    void setMousePosition(Vector2D mouse_movement);
+    void addRotation(Vector2D rotation);
     
-    //Some movement methods
-    void yaw(double val); //Around y - Counterclockwise = +
-    void pitch(double val); //Around x - Counterclockwise = +
-    void forward(double distance); //Along z - Forward = +
-    void sideStep(double val); //Along x - Right = +
-    void strafe(double val); //Along x - Right = +
+    //Pushes a movement to the movement stack
+    void toggleMovement(CameraMovement movement);
+    
+    //True if the given movement is currently toggled
+    bool isMovementSet(CameraMovement movement);
     
     //Set the movement speed
     void setSpeed(double speed);
@@ -51,17 +66,18 @@ private:
     Vector3D m_up;
     CameraMode m_mode;
     Vector3D m_direction;
-    Vector3D m_side;
-    double m_speed;
+    Vector3D m_right;
+    Vector2D m_rotation_movement;
+    GLdouble m_speed;
     
-    //For the bounding-sphere of the view
-    Vector3D m_center;
-    GLfloat m_diameter;
+    GLint m_movement_bits; //8 bit for possible movements
     
     Drawable* m_lookDrawable;
     Vector3D* m_lookPosition;
     
-    
+    //Pre-Rendering methods (for update)
+    void calculateTranslation(int delta);
+    void calculateRotation(int delta);
 };
 
 #endif /* defined(__ParticleSystem__Camera__) */

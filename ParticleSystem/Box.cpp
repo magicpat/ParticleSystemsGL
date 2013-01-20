@@ -18,7 +18,7 @@ Box::Box(Vector3D startPosition, GLfloat length, GLfloat width, GLfloat height) 
     ;
 }
 
-void Box::update(){
+void Box::update(int delta){
     ;
 }
 

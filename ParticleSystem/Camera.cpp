@@ -1,3 +1,4 @@
+
 //
 //  Camera.cpp
 //  ParticleSystem
@@ -7,23 +8,27 @@
 //
 
 #include "Camera.h"
-#include "math.h"
 #include "gl_math.h"
 
 
 Camera::Camera() : Drawable(), m_up(Vector3D(0.0f, 1.0f, 0.0f)),
                                m_mode(CameraMode::FREE),
                                m_direction({0.0f, 0.0f, -1.0f}),
-                               m_side({1.0f, 0.0f, 0.0f}),
-                               m_speed(0.1),
-                               m_center({0.0f, 0.0f, 0.0f}),
-                               m_diameter(100.0f)
+                               m_right({1.0f, 0.0f, 0.0f}),
+                               m_speed(0.03),
+                               m_rotation_movement(0.0, 0.0),
+                               m_movement_bits(0)
 {
     
 }
 
-void Camera::update(){
-    ;
+void Camera::update(int delta)
+{
+    calculateRotation(delta);
+    calculateTranslation(delta);
+    
+    m_direction = Vector3D(sinf(m_rotation.x), tanf(m_rotation.y), cosf(m_rotation.x));
+    m_right = Vector3D(m_direction.z, 0, m_direction.x);
 }
 
 void Camera::lookAt(Drawable* d)
@@ -32,118 +37,134 @@ void Camera::lookAt(Drawable* d)
     m_mode = CameraMode::LOOK_AT_DRAWABLE;
 }
 
-void Camera::lookAt(Vector3D* position){
+void Camera::lookAt(Vector3D* position)
+{
     if(position != NULL){
         m_lookPosition = position;
         m_mode = CameraMode::LOOK_AT_POSITION;
     }
 }
 
-
-void Camera::rotate(Vector3D angles){
-    Drawable::rotate(angles);
-}
-
-void Camera::translate(Vector3D movement){
-    addToVector3D(m_position, movement);
-    addToVector3D(m_direction, movement);
-}
-
-void Camera::lookFree(){
+void Camera::lookFree()
+{
     //TODO: Clear m_lookPosition and m_lookDrawable? Not sure
     m_mode = CameraMode::FREE;
 }
 
-void Camera::forward(double distance){    
-    m_position.x += distance * m_direction.x;
-    m_position.y += distance * m_direction.y;
-    m_position.z += distance * m_direction.z;    
+void Camera::toggleMovement(CameraMovement movement)
+{
+    m_movement_bits ^= movement;
 }
 
-void Camera::sideStep(double val){
-    Vector3D yaw = {3.0f, 0.0f, 0.0f};
-    
-    crossProductVector3D(m_up, m_direction, yaw);
-    
-    m_position.x += val * yaw.x;
-    m_position.y += val * yaw.y;
-    m_position.z += val * yaw.z;
+bool Camera::isMovementSet(CameraMovement movement)
+{
+    return m_movement_bits & movement;
 }
 
-void Camera::strafe(double val){
-    Vector3D movement = { val, 0.0f, 0.0f };
-    this->translate(movement);
+void Camera::addRotation(Vector2D rotation)
+{
+    m_rotation_movement = rotation;
 }
 
-void Camera::pitch(double val){
-    double x = m_direction.x;
-    double y = m_direction.z;
+void Camera::calculateTranslation(int delta)
+{
+    if(m_movement_bits == 0)
+    {
+        return;
+    }
     
-    m_direction.y += val/100.0;
-    normalizeVector3D(m_direction);
+	Vector3D movement(0.f, 0.f, 0.f);
+	Vector3D forward = Vector3D(sinf(m_rotation.x), 0, cosf(m_rotation.x));
+	Vector3D right   = Vector3D(-forward.z, 0, forward.x);
+    Vector3D up      = right.cross(forward);
     
-    m_rotation.x = atan2(m_direction.y, sqrt(x * x + y * y)) * 180.0 / PI;
-}
-
-void Camera::yaw(double val){
-    double x = m_direction.x;
-    double z = m_direction.z;
+	if(isMovementSet(CameraMovement::MOVE_LEFT))
+	{
+		movement -= right;
+	}
     
-    double r = sqrt(x*x + z*z); //Length of the vector and hypotenuse of the triangle
-    double theta = atan2(z, x); //Get the angle for z/x
+	if(isMovementSet(CameraMovement::MOVE_RIGHT) )
+	{
+		movement += right;
+	}
     
-    theta -= val / 40; //Add value to the angle between z/x
+	if(isMovementSet(CameraMovement::MOVE_FORWARD) )
+	{
+		movement += forward;
+	}
     
+	if(isMovementSet(CameraMovement::MOVE_BACKWARDS))
+	{
+		movement -= forward;
+	}
+    
+    if(isMovementSet(CameraMovement::RISE_UP))
+    {
+        movement += up;
+    }
+    
+    if(isMovementSet(CameraMovement::LOWER_DOWN))
+    {
+        movement -= up;
+    }
+    
+    if(movement.length() != 0){
+        //Normalize movement and adjust the movement-speed
+        movement.normalize();
+		movement = movement * m_speed * delta;
         
-    //Set the direction coordinates with the new angle
-    m_direction.x = r * cos(theta);
-    m_direction.z = r * sin(theta);
-    
-    //Normalization to prevent values > 1
-    normalizeVector3D(m_direction);
+        //Add the movement to the position
+		m_position += movement;
+    }
+}
 
-    //convert to degrees, opengl degrees..
-    //m_rotation.y = -theta * 180.0 / PI;
-    m_rotation.y = theta;
+void Camera::calculateRotation(int delta)
+{
+	static const float kRotationSpeed = (m_speed / 100) * delta ;
+    
+    m_rotation.x += m_rotation_movement.x * kRotationSpeed;
+    m_rotation.y += m_rotation_movement.y * kRotationSpeed;
+    
+	if(m_rotation.y < -(M_PI / 2) + 0.1)
+	{
+		m_rotation.y = -(M_PI / 2) + 0.1;
+	}
+    
+	if(m_rotation.y > (M_PI / 2) - 0.1)
+	{
+		m_rotation.y = (M_PI / 2) - 0.1;
+	}
+    
+    //Clear the added rotation, so it won't be added in the next update
+    m_rotation_movement.x = m_rotation_movement.y = 0.0f;
+    
+    //Add rotation if there is a X-movement activated
+    if(isMovementSet(CameraMovement::TURN_RIGHT)){
+        m_rotation_movement.x += -1.0 * m_speed * delta;
+    }
+    
+    if(isMovementSet(CameraMovement::TURN_LEFT)){
+        m_rotation_movement.x += 1.0 * m_speed * delta;
+    }
+    
+    
 }
 
 void Camera::draw()
 {
-    //Set the bounding-sphere for the view
     /*
-    GLfloat zNear = 1.0f;
-    GLfloat zFar = zNear + m_diameter;
-    
-    GLdouble left = m_center.x - m_diameter;
-    GLdouble right = m_center.x + m_diameter;
-    GLdouble bottom = m_center.y - m_diameter;
-    GLdouble top = m_center.y + m_diameter;
-    
-    glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
-    glOrtho(left, right, bottom, top, zNear, zFar);
-    
-    glMatrixMode(GL_MODELVIEW);
-    glLoadIdentity();
-    */
-    
+    printf("m_movement_bits: %d\n", m_movement_bits);
+    printf("m_rotation_movement: X:%f Y:%f\n", m_rotation_movement.x, m_rotation_movement.y);
     printf("m_rotation: %f , %f,  %f\n", m_rotation.x, m_rotation.y, m_rotation.z);
     printf("m_direction: %f , %f,  %f\n", m_direction.x, m_direction.y, m_direction.z);
     printf("m_position: %f , %f,  %f\n", m_position.x, m_position.y, m_position.z);
     printf("m_up: %f , %f,  %f\n\n", m_up.x, m_up.y, m_up.z);
-    
-    /*
-    glTranslatef(-m_position.x, -m_position.y, -m_position.z); //Move back to the actual position
-    glRotatef(m_rotation.x , 1.0, 0.0, 0.0);
-    glRotatef(m_rotation.y , 0.0, 1.0, 0.0);
-    glRotatef(m_rotation.z , 0.0, 0.0, 1.0);
-    glTranslatef(0.0f, 0.0f, 0.0f); //Move to origin
     */
-    
+
     switch(m_mode){
         case CameraMode::FREE:
             gluLookAt(m_position.x, m_position.y, m_position.z,
-                      m_direction.x, m_direction.y, m_direction.z,
+                      m_position.x + m_direction.x, m_position.y + m_direction.y, m_position.z + m_direction.z,
                       m_up.x, m_up.y, m_up.z);
             break;
         case CameraMode::LOOK_AT_DRAWABLE:

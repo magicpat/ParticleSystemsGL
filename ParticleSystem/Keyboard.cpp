@@ -12,8 +12,7 @@
 Camera* Keyboard::m_camera;
 Game* Keyboard::m_game;
 Window* Keyboard::m_window;
-int Keyboard::m_last_mouse_x = 0;
-int Keyboard::m_last_mouse_y = 0;
+Vector2D Keyboard::m_last_mouse_position(0.0, 0.0);
 
 
 Keyboard::Keyboard(Game* game, Camera* camera, Window* window){
@@ -27,58 +26,61 @@ Keyboard::Keyboard(Game* game, Camera* camera, Window* window){
 }
 
 void Keyboard::listen(){
-    glutKeyboardFunc(&Keyboard::keyPressed);
-    glutSpecialFunc(&Keyboard::specialKeyPressed);
+    //Mouse-Movement Delegate
     glutPassiveMotionFunc(&Keyboard::mouseMoved);
+    
+    //Hide the mouse cursor
+    glutSetCursor(GLUT_CURSOR_NONE);
+    
+    //Keypress Delegates
+    glutIgnoreKeyRepeat(1);
+    glutKeyboardFunc(&Keyboard::keyToggled);
+    glutSpecialFunc(&Keyboard::specialKeyToggled);
+    glutKeyboardUpFunc(&Keyboard::keyToggled);
+    glutSpecialUpFunc(&Keyboard::specialKeyToggled);
 }
 
-void Keyboard::keyPressed( unsigned char key, int x, int y ) {
-    //usleep(50);
-    
+void Keyboard::keyToggled(unsigned char key, int x, int y) {
     switch(key){
-        case 27:
+        case KEY_ESC:
             Keyboard::m_window->destroy();
             exit(0);
             break;
         case 'w':
-            //Move forward
-            Keyboard::m_camera->forward(0.1);
+        case KEY_CTRL_W:
+            Keyboard::m_camera->toggleMovement(CameraMovement::MOVE_FORWARD);
             break;
         case 's':
-            //Move backwards
-            Keyboard::m_camera->forward(-0.1);
+        case KEY_CTRL_S:
+            Keyboard::m_camera->toggleMovement(CameraMovement::MOVE_BACKWARDS);
             break;
         case 'a':
-            //Strafe left
-            Keyboard::m_camera->sideStep(0.1);
-            //Keyboard::m_camera->strafe(-0.1);
+        case KEY_CTRL_A:
+            Keyboard::m_camera->toggleMovement(CameraMovement::MOVE_LEFT);
             break;
         case 'd':
-            //Strafe right
-            Keyboard::m_camera->sideStep(-0.1);
-            //Keyboard::m_camera->strafe(0.1);
+        case KEY_CTRL_D:
+            Keyboard::m_camera->toggleMovement(CameraMovement::MOVE_RIGHT);
             break;
         case 'e':
-            //Turn right
-            Keyboard::m_camera->yaw(-1.5);
+        case KEY_CTRL_E:
+            Keyboard::m_camera->toggleMovement(CameraMovement::TURN_RIGHT);
             break;
         case 'q':
-            //Turn left
-            Keyboard::m_camera->yaw(1.5);
+        case KEY_CTRL_Q:
+            Keyboard::m_camera->toggleMovement(CameraMovement::TURN_LEFT);
             break;
+        case KEY_SPACE:
+            Keyboard::m_camera->toggleMovement(CameraMovement::RISE_UP);
+            break;
+        
     }
-    
-    //Keyboard::m_game->processKeyboardInput(key);
 }
 
-void Keyboard::specialKeyPressed( int key, int x, int y ){
-    usleep(20);
-    switch(key){        
-        case GLUT_KEY_UP:
-            Keyboard::m_camera->translate(Vector3D(0.0f,TRANSLATION_SPEED, 0.0f));
-            break;
-        case GLUT_KEY_DOWN:
-            Keyboard::m_camera->translate(Vector3D(0.0f,-TRANSLATION_SPEED, 0.0f));
+void Keyboard::specialKeyToggled(int key, int x, int y ){
+    switch(key){
+        case GLUT_KEY_CTRL_L:
+            Keyboard::m_camera->toggleMovement(CameraMovement::LOWER_DOWN);
             break;
         default:
             return;
@@ -86,15 +88,35 @@ void Keyboard::specialKeyPressed( int key, int x, int y ){
 }
 
 void Keyboard::mouseMoved(int x, int y) {
-    int diffX= x - Keyboard::m_last_mouse_x;
-    int diffY= y - Keyboard::m_last_mouse_y;
+    //Calculate and add the rotation which will be applied in the next update
+    Vector2D rotation(Keyboard::m_last_mouse_position.x - x,
+                      Keyboard::m_last_mouse_position.y - y);
     
-    Keyboard::m_last_mouse_x = x; 
-    Keyboard::m_last_mouse_y = y;
+    if(rotation.x == 0 && rotation.y == 0)
+    {
+        return;
+    }
     
-    //Keyboard::m_camera->yaw(-diffX);
-    //Keyboard::m_camera->pitch(diffY);
+    //Add a rotation
+    Keyboard::m_camera->addRotation(rotation);
     
-    //Keyboard::m_camera->rotate(Vector3D(diffY, diffX, 0.0));
+    int windowX		= glutGet( GLUT_WINDOW_X );
+	int windowY		= glutGet( GLUT_WINDOW_Y );
+	int screenWidth		= Window::SCREEN_WIDTH;
+	int screenHeight	= Window::SCREEN_HEIGHT;
+    
+    int screenLeft = -windowX;
+	int screenTop = -windowY;
+	int screenRight = screenWidth - windowX;
+	int screenBottom = screenHeight - windowY;
+    
+	if( x <= screenLeft+10 || (y) <= screenTop+10 || x >= screenRight-10 || y >= screenBottom - 10) {
+        x = screenWidth/2;
+        y = screenHeight/2;
+		glutWarpPointer(x, y);
+	}
+    
+    //Remember last mouse position
+    Keyboard::m_last_mouse_position = Vector2D(x,y);
 }
 
