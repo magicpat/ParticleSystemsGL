@@ -29,17 +29,6 @@ public:
 	virtual void rotate(Vector3D angles);
     void translate(Vector3D direction);
     
-    //Utility-methods which call rotate()
-    void rotateX(GLfloat angle); //+ = Counterclockwise X
-	void rotateY(GLfloat angle); //+ = Counterclockwise Y
-	void rotateZ(GLfloat angle); //+ = Counterclockwise Z
-    
-    
-    //Utility-methods which call translate()
-	void translateZ(GLfloat distance);
-    void translateY(GLfloat distance);
-	void translateX(GLfloat distance);
-    
 protected:
     Vector3D m_position;
     Vector3D m_rotation;    

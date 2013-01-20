@@ -11,6 +11,7 @@
 #include "LOpenGL.h"
 #include "Camera.h"
 #include "Game.h"
+#include "HUD.h"
 #include <vector>
 
 #define MAXIMUM_FRAME_RATE 120
@@ -30,7 +31,7 @@ public:
     static void reshape(int width, int height);
     
     //Instance methods
-    Window(int argc, char* args[], Game* game, Camera* camera);
+    Window(int argc, char* args[], Game* game, Camera* camera, HUD* hud);
     bool destroy();
     
 private:
@@ -40,6 +41,7 @@ private:
     //Static variables to be able to access them in the OpenGL-Callbacks, defined above
     static Game* m_game;
     static Camera* m_camera;
+    static HUD* m_hud;
     
     //Instance variables
     int m_window;

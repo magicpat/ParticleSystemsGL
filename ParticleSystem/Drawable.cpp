@@ -78,33 +78,3 @@ void Drawable::rotate(Vector3D rotation){
     }
 }
 
-void Drawable::rotateY (GLfloat angle)
-{
-	rotate(Vector3D(0.0f, angle, 0.0f));
-}
-
-void Drawable::rotateX (GLfloat angle)
-{
-	rotate(Vector3D(angle, 0.0f, 0.0f));
-}
-
-void Drawable::rotateZ (GLfloat angle)
-{
-	rotate(Vector3D(0.0f, 0.0f, angle));
-}
-
-void Drawable::translateX(GLfloat distance)
-{
-	translate(Vector3D(distance, 0.0f, 0.0f));
-}
-
-void Drawable::translateY(GLfloat distance)
-{
-    translate(Vector3D(0.0f,distance, 0.0f));
-}
-
-void Drawable::translateZ(GLfloat distance)
-{
-    translate(Vector3D(0.0f, 0.0f, distance));
-}
-

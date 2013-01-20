@@ -51,9 +51,19 @@ void Camera::lookFree()
     m_mode = CameraMode::FREE;
 }
 
+Vector3D Camera::getDirection()
+{
+    return m_direction;
+}
+
 void Camera::toggleMovement(CameraMovement movement)
 {
     m_movement_bits ^= movement;
+}
+
+void Camera::clearMovement()
+{
+    m_movement_bits = 0x0000;
 }
 
 bool Camera::isMovementSet(CameraMovement movement)

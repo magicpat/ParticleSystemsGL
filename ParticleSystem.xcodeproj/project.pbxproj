@@ -14,11 +14,12 @@
 		4D1F52C7168B6B7800EB0BCB /* particle_mask.raw in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4D1F52C2168B6AAF00EB0BCB /* particle_mask.raw */; };
 		4D1F52C8168B6B7800EB0BCB /* particle.raw in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4D1F52C3168B6AAF00EB0BCB /* particle.raw */; };
 		4DB68125168CA54B00C7462D /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4DB68123168CA54B00C7462D /* Camera.cpp */; };
-		4DB6812A168CACEF00C7462D /* Keyboard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4DB68128168CACEF00C7462D /* Keyboard.cpp */; };
+		4DB6812A168CACEF00C7462D /* Input.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4DB68128168CACEF00C7462D /* Input.cpp */; };
 		4DB6812F168CB32500C7462D /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4DB6812D168CB32500C7462D /* Game.cpp */; };
 		4DB68132168CE6A800C7462D /* Drawable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4DB68131168CE6A800C7462D /* Drawable.cpp */; };
 		4DB68136168CE77C00C7462D /* gl_math.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4DB68134168CE77C00C7462D /* gl_math.cpp */; };
 		4DB6813C168CFE3C00C7462D /* Box.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4DB6813A168CFE3C00C7462D /* Box.cpp */; };
+		4DE176F416AC2E4D00B4A34F /* HUD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4DE176F216AC2E4D00B4A34F /* HUD.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -47,8 +48,8 @@
 		4D1F52CB168B87D700EB0BCB /* Drawable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Drawable.h; sourceTree = "<group>"; };
 		4DB68123168CA54B00C7462D /* Camera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Camera.cpp; sourceTree = "<group>"; };
 		4DB68124168CA54B00C7462D /* Camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Camera.h; sourceTree = "<group>"; };
-		4DB68128168CACEF00C7462D /* Keyboard.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Keyboard.cpp; sourceTree = "<group>"; };
-		4DB68129168CACEF00C7462D /* Keyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Keyboard.h; sourceTree = "<group>"; };
+		4DB68128168CACEF00C7462D /* Input.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Input.cpp; sourceTree = "<group>"; };
+		4DB68129168CACEF00C7462D /* Input.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Input.h; sourceTree = "<group>"; };
 		4DB6812C168CB27600C7462D /* Fontain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fontain.h; sourceTree = "<group>"; };
 		4DB6812D168CB32500C7462D /* Game.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Game.cpp; sourceTree = "<group>"; };
 		4DB6812E168CB32500C7462D /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
@@ -58,6 +59,8 @@
 		4DB68137168CE88400C7462D /* gl_math.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gl_math.h; sourceTree = "<group>"; };
 		4DB6813A168CFE3C00C7462D /* Box.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Box.cpp; sourceTree = "<group>"; };
 		4DB6813B168CFE3C00C7462D /* Box.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Box.h; sourceTree = "<group>"; };
+		4DE176F216AC2E4D00B4A34F /* HUD.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HUD.cpp; sourceTree = "<group>"; };
+		4DE176F316AC2E4D00B4A34F /* HUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUD.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +134,8 @@
 				4DB68130168CD91B00C7462D /* Window.h */,
 				4DB68131168CE6A800C7462D /* Drawable.cpp */,
 				4D1F52CB168B87D700EB0BCB /* Drawable.h */,
+				4DE176F216AC2E4D00B4A34F /* HUD.cpp */,
+				4DE176F316AC2E4D00B4A34F /* HUD.h */,
 			);
 			name = rendering;
 			sourceTree = "<group>";
@@ -138,8 +143,8 @@
 		4DB68127168CACD900C7462D /* input */ = {
 			isa = PBXGroup;
 			children = (
-				4DB68128168CACEF00C7462D /* Keyboard.cpp */,
-				4DB68129168CACEF00C7462D /* Keyboard.h */,
+				4DB68128168CACEF00C7462D /* Input.cpp */,
+				4DB68129168CACEF00C7462D /* Input.h */,
 			);
 			name = input;
 			sourceTree = "<group>";
@@ -236,11 +241,12 @@
 				4D1F52B5168B4FDF00EB0BCB /* Window.cpp in Sources */,
 				4D1F52BC168B65BC00EB0BCB /* Fontain.cpp in Sources */,
 				4DB68125168CA54B00C7462D /* Camera.cpp in Sources */,
-				4DB6812A168CACEF00C7462D /* Keyboard.cpp in Sources */,
+				4DB6812A168CACEF00C7462D /* Input.cpp in Sources */,
 				4DB6812F168CB32500C7462D /* Game.cpp in Sources */,
 				4DB68132168CE6A800C7462D /* Drawable.cpp in Sources */,
 				4DB68136168CE77C00C7462D /* gl_math.cpp in Sources */,
 				4DB6813C168CFE3C00C7462D /* Box.cpp in Sources */,
+				4DE176F416AC2E4D00B4A34F /* HUD.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

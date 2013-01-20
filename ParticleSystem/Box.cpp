@@ -26,7 +26,7 @@ void Box::update(int delta){
 void Box::draw(){
     glPushMatrix();
     
-    Drawable::draw();
+    //Drawable::draw();
     
     // Turn on wireframe mode
     glPolygonMode(GL_FRONT, GL_FILL);
@@ -105,6 +105,12 @@ void Box::draw(){
     // Turn off wireframe mode
     glPolygonMode(GL_FRONT, GL_FILL);
     glPolygonMode(GL_BACK, GL_FILL);
+    
+    glTranslatef(m_position.x + m_length/2, m_position.y + m_height/2, m_position.z + m_width/2); //Move back to the actual position
+    glRotatef(m_rotation.x , 1.0, 0.0, 0.0);
+    glRotatef(m_rotation.y , 0.0, 1.0, 0.0);
+    glRotatef(m_rotation.z , 0.0, 0.0, 1.0);
+    //glTranslatef(0.0f, 0.0f, 0.0f); //Move to origin
     
     glPopMatrix();
     

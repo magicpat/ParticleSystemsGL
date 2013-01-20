@@ -11,13 +11,15 @@
 
 Game* Window::m_game;
 Camera* Window::m_camera;
+HUD* Window::m_hud;
 
 int lastDelta;
 int currentDelta;
 
-Window::Window(int argc, char* args[], Game* game, Camera* camera): m_window(0){
+Window::Window(int argc, char* args[], Game* game, Camera* camera, HUD* hud): m_window(0){
     Window::m_game = game;
     Window::m_camera = camera;
+    Window::m_hud = hud;
     
     //Initialize FreeGLUT
     glutInit( &argc, args );
@@ -92,6 +94,7 @@ void Window::display( ){
     //Update game
     Window::m_game->update(delta);
     Window::m_camera->update(delta);
+    Window::m_hud->update(delta);
     
     //Clear and set the image to render
     glClearDepth (1);
@@ -107,6 +110,9 @@ void Window::display( ){
     
     //Call to the game-logic to draw it's drawables
     Window::m_game->draw();
+    
+    //Draw the HUD
+    Window::m_hud->draw();
     
     //Update screen
     glutSwapBuffers();

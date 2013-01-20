@@ -48,8 +48,11 @@ public:
     void setMousePosition(Vector2D mouse_movement);
     void addRotation(Vector2D rotation);
     
-    //Pushes a movement to the movement stack
+    //Pushes bit-changes to the movement bitmask
     void toggleMovement(CameraMovement movement);
+    
+    //Disables all toggled movements
+    void clearMovement();
     
     //True if the given movement is currently toggled
     bool isMovementSet(CameraMovement movement);
@@ -61,6 +64,9 @@ public:
     void lookAt(Drawable* d);
     void lookAt(Vector3D* position);
     void lookFree();
+    
+    //Getter
+    Vector3D getDirection();
     
 private:
     Vector3D m_up;

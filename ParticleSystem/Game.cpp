@@ -58,7 +58,7 @@ void Game::draw(){
         Drawable* test = m_drawables[i];
 
         if(i == 0){
-            test->rotateY(1.0);
+            test->rotate(Vector3D(0.0, 1.0, 0.0));
         }
         m_drawables[i]->draw();
     }
