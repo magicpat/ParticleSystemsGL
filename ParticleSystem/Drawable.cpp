@@ -18,6 +18,10 @@ Drawable::Drawable(Vector3D startPosition) : m_position(startPosition), m_rotati
 {
     ;
 }
+Drawable::~Drawable()
+{
+    ;
+}
 
 
 void Drawable::setPosition(Vector3D position)
@@ -30,10 +34,19 @@ Vector3D Drawable::getPosition()
     return m_position;
 }
 
+void Drawable::setCameraDistance(Vector3D camera_distance)
+{
+    this->m_camera_distance = camera_distance;
+}
+
+Vector3D Drawable::getCameraDistance()
+{
+    return this->m_camera_distance;
+}
+
 void Drawable::draw()
 {
     //glPushMatrix();
-    //glLoadIdentity();
     glTranslatef(m_position.x, m_position.y, m_position.z); //Move back to the actual position
     glRotatef(m_rotation.x , 1.0, 0.0, 0.0);
     glRotatef(m_rotation.y , 0.0, 1.0, 0.0);
@@ -78,3 +91,7 @@ void Drawable::rotate(Vector3D rotation){
     }
 }
 
+bool Drawable::AscendingCameraDistanceSort::operator()(Drawable*& begin, Drawable*& end)
+{
+    return begin->getCameraDistance().z < end->getCameraDistance().z;
+}

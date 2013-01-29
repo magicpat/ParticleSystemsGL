@@ -92,18 +92,23 @@ void Window::display( ){
     int delta = currentDelta - lastDelta;
     
     //Update game
-    Window::m_game->update(delta);
     Window::m_camera->update(delta);
+    Window::m_game->update(delta);
     Window::m_hud->update(delta);
     
     //Clear and set the image to render
+    glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
     glClearDepth (1);
     glClearColor (0.0,0.0,0.0,1.0);
     glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
+    //Blending settings
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    
     //Initialize Modelview-Matrix
     glMatrixMode(GL_MODELVIEW);
-    glLoadIdentity();
+    
+    //glLoadIdentity();
     
     //Transform the Modelview-Matrix to the camera-view
     Window::m_camera->draw();
@@ -113,6 +118,7 @@ void Window::display( ){
     
     //Draw the HUD
     Window::m_hud->draw();
+    
     
     //Update screen
     glutSwapBuffers();

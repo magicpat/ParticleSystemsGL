@@ -39,7 +39,8 @@ enum CameraMovement
 
 class Camera : public Drawable {
 public:
-	Camera();	
+	Camera();
+    virtual ~Camera();
     
     virtual void update(int delta);
     virtual void draw();

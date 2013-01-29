@@ -11,6 +11,7 @@
 
 #include "LOpenGL.h"
 #include "Drawable.h"
+#include "TextureLoader.h"
 
 
 typedef struct
@@ -34,9 +35,8 @@ class Fontain : public Drawable {
 public:
     static const unsigned int MAX_PARTICLES = 500;
     
-    Fontain(Vector3D startPosition);
-    Fontain();
-    ~Fontain();
+    Fontain(Vector3D startPosition,  TextureLoader* texture_loader);
+    virtual ~Fontain();
     
     //Overridden methods from Drawable
     virtual void update(int delta);
@@ -49,9 +49,11 @@ private:
     void glCreateParticles();
     void glUpdateParticles(int delta);
     
-    GLfloat m_textures[10];
+    GLuint m_textures[10];
     GLfloat m_radius;
     PARTICLE m_particles[MAX_PARTICLES];
+    
+    TextureLoader* m_texture_loader;
 };
 
 

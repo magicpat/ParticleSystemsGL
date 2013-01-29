@@ -13,16 +13,19 @@
 #include <math.h>
 
 
-Fontain::Fontain(Vector3D startPosition) : Drawable(startPosition),  m_radius(5.0f){
+Fontain::Fontain(Vector3D startPosition, TextureLoader* texture_loader) : Drawable(startPosition),  m_radius(1.0f), m_texture_loader(texture_loader){
     glCreateParticles();
+    
+    m_texture_loader->loadTexture("particle_mask.raw");
+    m_texture_loader->loadTexture("particle.raw");
+    
+    //m_textures[0] = m_texture_loader->getTexture("particle_mask.raw");
+    //m_textures[1] = m_texture_loader->getTexture("particle.raw");
     
     m_textures[0] = LoadTextureRAW( "particle_mask.raw", 256, 256);
     m_textures[1] = LoadTextureRAW( "particle.raw", 256, 256 );
 }
 
-Fontain::Fontain() : Fontain(Vector3D{0.0f, 0.0f, 0.0f}){
-    ;
-}
 
 Fontain::~Fontain(){
     ;
@@ -83,7 +86,8 @@ void Fontain::update(int delta) {
 }
 
 void Fontain::draw() {
-    //Drawable::draw();
+    glPushMatrix();
+    Drawable::draw();
     
     int i;
     for (i = 1; i < MAX_PARTICLES; i++)
@@ -97,11 +101,14 @@ void Fontain::draw() {
         
         glDisable (GL_DEPTH_TEST);
         glEnable (GL_BLEND);
+        glEnable(GL_TEXTURE_2D);
         
         glBlendFunc (GL_DST_COLOR, GL_ZERO);
-        glBindTexture (GL_TEXTURE_2D, m_textures[0]);
         
+        
+        glBindTexture (GL_TEXTURE_2D, m_textures[0]);
         glBegin (GL_QUADS);
+        
             glTexCoord2d (0, 0);
             glVertex3f (-1, -1, 0);
             glTexCoord2d (1, 0);
@@ -111,7 +118,7 @@ void Fontain::draw() {
             glTexCoord2d (0, 1);
             glVertex3f (-1, 1, 0);
         glEnd();
-        
+         
         glBlendFunc (GL_ONE, GL_ONE);
         glBindTexture (GL_TEXTURE_2D, m_textures[1]);
         
@@ -125,13 +132,16 @@ void Fontain::draw() {
             glTexCoord2d (0, 1);
             glVertex3f (-1, 1, 0);
         glEnd();
-        
+
         glEnable(GL_DEPTH_TEST);
         
+        glDisable(GL_TEXTURE_2D);
+        glDisable(GL_BLEND);
         
         glPopMatrix();
         
     }
+    glPopMatrix();
 }
 
 //function to load the RAW file

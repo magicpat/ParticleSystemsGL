@@ -10,10 +10,17 @@
 #include "Fontain.h"
 #include "Drawable.h"
 #include "Box.h"
+#include "GlassCube.h"
 #include "gl_math.h"
+#include "3DS.h"
 
-Game::Game(Camera* camera) : m_camera(camera){
-    
+Game::Game(Camera* camera, TextureLoader* texture_loader) : m_camera(camera), m_texture_loader(texture_loader){
+    ;
+}
+
+Game::~Game()
+{
+
 }
 
 void Game::init(){
@@ -25,14 +32,23 @@ void Game::init(){
     
     m_camera->setPosition(Vector3D(roomCenter.x, roomCenter.y + 7.0, roomCenter.z + 10.0));
     
-    //Drawable* fontain = (Drawable *)new Fontain(roomCenter);
-    Drawable* obstacle = new Box(roomCenter, 1.0, 1.0, 1.0);
+    Drawable* fontain = new Fontain(roomCenter, m_texture_loader);
+    Drawable* obstacle = new GlassCube(roomCenter, 1.0, m_texture_loader);
     Drawable* room = new Box(Vector3D(0.0f, 0.0f, 0.0f), roomLength, roomWidth, roomHeight);
     
-    //m_camera->lookAt(obstacle);
+    //3DS TEST
+    /*
+     m_camera->setPosition(Vector3D(0.0, 0.0, 0.0));
+     Drawable* village = new Model();
+    dynamic_cast<Model*>(village)->loadFile("/Users/ps/XCodeProjects/ParticleSystem/ParticleSystem/resources/pyramid.3ds");
+    this->addDrawable(village);
+     */
+    //END 3DS TEST
     
-    //this->addDrawable(fontain);
+    this->addDrawable(fontain);
+    
     this->addDrawable(obstacle);
+    this->addDrawable(new GlassCube(Vector3D(roomCenter.x, roomCenter.y, roomCenter.z + 2.0), 2.0, m_texture_loader));
     this->addDrawable(room);
 }
 
@@ -40,14 +56,17 @@ void Game::start(){
     this->init();
 }
 
-void Game::processKeyboardInput(const unsigned char c){
-    ;
-}
-
 void Game::update(int delta){
     for(std::vector<Drawable*>::size_type i = 0; i != this->m_drawables.size(); i++) {
-        this->m_drawables[i]->update(delta);
+        Drawable* d = m_drawables[i];
+        d->update(delta);
+        
+        //Recalculate distance to camera
+        d->setCameraDistance(d->getPosition() - m_camera->getPosition());
     }
+    
+    //Update distances of Camera
+    std::sort(m_drawables.begin(), m_drawables.end(), Drawable::AscendingCameraDistanceSort());
 }
 
 void Game::draw(){
@@ -55,13 +74,9 @@ void Game::draw(){
     glMatrixMode(GL_MODELVIEW);
     
     for(std::vector<Drawable*>::size_type i = 0; i != m_drawables.size(); i++) {
-        Drawable* test = m_drawables[i];
-
-        if(i == 0){
-            test->rotate(Vector3D(0.0, 1.0, 0.0));
-        }
         m_drawables[i]->draw();
     }
+
 }
 
 void Game::addDrawable(Drawable* d){

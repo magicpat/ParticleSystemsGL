@@ -11,6 +11,7 @@
 #include "Camera.h"
 #include "Input.h"
 #include "HUD.h"
+#include "TextureLoader.h"
 
 
 int main( int argc, char* args[] )
@@ -18,7 +19,8 @@ int main( int argc, char* args[] )
     try{
         //Create the most important application components
         Camera camera;
-        Game game(&camera);
+        TextureLoader texture_loader("/Users/ps/XCodeProjects/ParticleSystem/ParticleSystem/resources");
+        Game game(&camera, &texture_loader);
         HUD hud(Window::SCREEN_WIDTH, Window::SCREEN_HEIGHT, &camera);
         
         //Create the window the application will be rendered to

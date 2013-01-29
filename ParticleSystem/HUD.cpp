@@ -18,6 +18,11 @@ HUD::HUD(const int screen_width, const int screen_height, Camera* camera)
     ;
 }
 
+HUD::~HUD()
+{
+    ;
+}
+
 void HUD::update(int delta)
 {
     ;
@@ -25,15 +30,40 @@ void HUD::update(int delta)
 
 void HUD::draw()
 {
-    setOrthographicProjection();
+    //Switch to projection mode
+	glMatrixMode(GL_PROJECTION);
     
-    glColor3f(0.0, 0.0, 0.0);
-    //TODO: build in a flag control?
-	renderCameraPosition(5, 20);
-    renderCameraDirection(5, 40);
-	
+	//Save previous matrix which contains the settings for the perspective projection
+	glPushMatrix();
     
-	restorePerspectiveProjection();
+        //Reset matrix
+        glLoadIdentity();
+        
+        //Set a 2D orthographic projection
+        gluOrtho2D(0, m_screen_width, 0, m_screen_height);
+        
+        //Invert the y axis, down is positive
+        glScalef(1, -1, 1);
+        
+        //Mover the origin from the bottom left corner to the upper left corner
+        glTranslatef(0, -m_screen_height, 0);
+        
+        //Switch back to modelview mode
+        glMatrixMode(GL_MODELVIEW);
+        
+        glColor3f(255, 255, 255);
+    
+        //TODO: build in a flag control?
+        renderCameraPosition(5, 20);
+        renderCameraDirection(5, 40);
+        
+        
+        glMatrixMode(GL_PROJECTION);
+
+	glPopMatrix();
+    
+	// get back to modelview mode
+	glMatrixMode(GL_MODELVIEW);
 }
 
 void HUD::renderCameraPosition(float x, float y)

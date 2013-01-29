@@ -12,13 +12,15 @@
 #include <vector>
 #include "Drawable.h"
 #include "Camera.h"
+#include "TextureLoader.h"
 
 class Game : public Drawable {
 public:
     void processKeyboardInput(const unsigned char c);
     void start();
     
-    Game(Camera* camera);
+    Game(Camera* camera, TextureLoader* texture_loader);
+    virtual ~Game();
     
     //Methods derrived from Drawable
     virtual void update(int delta);
@@ -32,7 +34,10 @@ private:
     
     //The elements to render
     std::vector<Drawable*> m_drawables;
+    
+    //Constructor-related variables
     Camera* m_camera;
+    TextureLoader* m_texture_loader;
 };
 
 #endif /* defined(__ParticleSystem__Game__) */

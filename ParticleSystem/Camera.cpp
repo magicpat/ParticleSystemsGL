@@ -22,6 +22,11 @@ Camera::Camera() : Drawable(), m_up(Vector3D(0.0f, 1.0f, 0.0f)),
     
 }
 
+Camera::~Camera()
+{
+    ;
+}
+
 void Camera::update(int delta)
 {
     calculateRotation(delta);
@@ -156,12 +161,12 @@ void Camera::calculateRotation(int delta)
     if(isMovementSet(CameraMovement::TURN_LEFT)){
         m_rotation_movement.x += 1.0 * m_speed * delta;
     }
-    
-    
 }
 
 void Camera::draw()
 {
+    glLoadIdentity();
+    
     /*
     printf("m_movement_bits: %d\n", m_movement_bits);
     printf("m_rotation_movement: X:%f Y:%f\n", m_rotation_movement.x, m_rotation_movement.y);
