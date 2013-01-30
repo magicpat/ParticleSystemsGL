@@ -6,6 +6,8 @@ OpenGL - Demonstration for following techniques:
 - Loading of 3DS-Files with textures
 - Implementation of a simple fontain particle-system
 - Transparent-Geometry with depth-sorting
+- FPS-Camera view with mouse and keyboard control
+- Simple skybox
 -----------------------------------------
 
 -----------------------------------------
