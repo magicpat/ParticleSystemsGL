@@ -18,19 +18,26 @@ public:
     //Initializes the object at position (0.0, 0.0, 0.0)
     Drawable();
     Drawable(Vector3D startPosition);
+    Drawable(Vector3D startPosition, bool transparent);
     virtual ~Drawable();
     
-    virtual void update(int delta) = 0;
+    virtual void update(double delta) = 0;
     virtual void draw() = 0;
     
-    void setPosition(Vector3D position);
-    Vector3D getPosition();
-
-    void setCameraDistance(Vector3D camera_distance);
-    Vector3D getCameraDistance();
+    //Transformations
+	virtual void rotate(const Vector3D angles);
+    void translate(const Vector3D direction);
+    void scale(const GLfloat scalefactor);
     
-	virtual void rotate(Vector3D angles);
-    void translate(Vector3D direction);
+    //Getter
+    bool isTransparent() const;
+    Vector3D getPosition() const;
+    Vector3D getRotation() const;
+    GLfloat getCameraDistance() const;
+    
+    //Setter
+    void setPosition(Vector3D position);
+    void setCameraDistance(GLfloat camera_distance);
     
     struct AscendingCameraDistanceSort{
         bool operator()(Drawable*& begin, Drawable*& end);
@@ -39,9 +46,11 @@ public:
 protected:
     Vector3D m_position;
     Vector3D m_rotation;
+    GLfloat m_scalefactor;
+    bool m_transparent;
     
-    //Distance to the eye
-    Vector3D m_camera_distance;
+    //Distance to the eye - Usable for LOD
+    GLfloat m_camera_distance;
 };
 
 

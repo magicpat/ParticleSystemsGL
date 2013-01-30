@@ -40,6 +40,7 @@
 #include <vector>
 #include <iostream>
 #include "Drawable.h"
+#include "TextureLoader.h"
 
 /*
 #include "qt_headers.h"
@@ -61,7 +62,7 @@ public:
      \brief Constructor of this class
      Model() is the constructor of this class, and enables texture generation and sets how that should be done, and sets the current frame variable to 0
      */
-	Model();
+	Model(TextureLoader* texture_loader);
     
     /**
      \brief Destructor of this class
@@ -96,12 +97,21 @@ public:
 	void disableLights();
     
     //Drawable override methods
-    void update(int delta);
+    void update(double delta);
     void draw();
     
     //GETTER METHODS
 	Lib3dsFile * get3DSPointer();
     std::string getFilename();
+protected:
+    TextureLoader* m_texture_loader;
+    
+    /**
+     \brief Actually renders the model
+     It renders the model, by rendering node by node using the renderNode function.But before it's renderd it's translated to (x,y,z) and then rotates it angle degrees
+     \sa renderNode()
+     */
+	void renderModel();
 private:
 	Lib3dsFile *file; /**< file holds the data of the model */
 	const char *filename; /**< It's the filename of the model */
@@ -111,12 +121,13 @@ private:
 	bool lightEnabled; /**< wheter light was enabled before this class. */
 	GLuint lightListIndex;
     
-    /**
-     \brief Actually renders the model
-     It renders the model, by rendering node by node using the renderNode function.But before it's renderd it's translated to (x,y,z) and then rotates it angle degrees
-     \sa renderNode()
-     */
-	void renderModel();
+    
+    
+    //Some utility variables
+    std::string m_file_path;
+    std::string m_folder_path;
+    
+    
     
     /**
      \brief create lighting list

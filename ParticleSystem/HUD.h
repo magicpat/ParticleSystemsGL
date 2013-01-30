@@ -18,7 +18,7 @@ class HUD : public Drawable
 public:
     HUD(const int screen_width, const int screen_height, Camera* camera);
     virtual ~HUD();
-    virtual void update(int delta);
+    virtual void update(double delta);
     virtual void draw();
     
 private:

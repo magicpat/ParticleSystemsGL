@@ -13,8 +13,8 @@ Game* Window::m_game;
 Camera* Window::m_camera;
 HUD* Window::m_hud;
 
-int lastDelta;
-int currentDelta;
+double lastDelta;
+double currentDelta;
 
 Window::Window(int argc, char* args[], Game* game, Camera* camera, HUD* hud): m_window(0){
     Window::m_game = game;
@@ -62,6 +62,8 @@ Window::Window(int argc, char* args[], Game* game, Camera* camera, HUD* hud): m_
     //Set reshape callback
     glutReshapeFunc (reshape);
     
+    currentDelta = glutGet(GLUT_ELAPSED_TIME);
+    
     //Set the run-callback for the mainloop
     glutTimerFunc( 1000 / Window::SCREEN_FPS, Window::run, 0 );
 
@@ -79,7 +81,7 @@ void Window::reshape (int width, int height) {
     glViewport (0, 0, (GLsizei)width, (GLsizei)height);
     glMatrixMode (GL_PROJECTION);
     glLoadIdentity ();
-    gluPerspective (60, (GLfloat)width / (GLfloat)height, 1.0, 100.0);
+    gluPerspective (60, (GLfloat)width / (GLfloat)height, 1.0, 800.0);
     glMatrixMode (GL_MODELVIEW);
 }
 
@@ -89,7 +91,7 @@ void Window::display( ){
     
     // Get the current time (in milliseconds) and calculate the elapsed time
     currentDelta = glutGet(GLUT_ELAPSED_TIME);
-    int delta = currentDelta - lastDelta;
+    double delta = (currentDelta - lastDelta)/1000;
     
     //Update game
     Window::m_camera->update(delta);
@@ -102,13 +104,10 @@ void Window::display( ){
     glClearColor (0.0,0.0,0.0,1.0);
     glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
-    //Blending settings
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    
     
     //Initialize Modelview-Matrix
     glMatrixMode(GL_MODELVIEW);
-    
-    //glLoadIdentity();
     
     //Transform the Modelview-Matrix to the camera-view
     Window::m_camera->draw();
@@ -118,7 +117,6 @@ void Window::display( ){
     
     //Draw the HUD
     Window::m_hud->draw();
-    
     
     //Update screen
     glutSwapBuffers();

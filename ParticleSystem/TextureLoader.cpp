@@ -9,7 +9,7 @@
 #include "TextureLoader.h"
 #include <FreeImagePlus.h>
 
-TextureLoader::TextureLoader(const char* texture_directory) : m_texture_directory(texture_directory), m_texture_map()
+TextureLoader::TextureLoader(std::string texture_directory) : m_texture_directory(texture_directory), m_texture_map()
 {
     ;
 }
@@ -27,6 +27,11 @@ TextureLoader::~TextureLoader()
 
 GLuint TextureLoader::loadTexture(const std::string texture_name)
 {
+    return loadTexture(texture_name, m_texture_directory);
+}
+
+GLuint TextureLoader::loadTexture(const std::string texture_name, const std::string directory)
+{
     //If the texture is already loaded, do nothing
     if(isTextureLoaded(texture_name))
     {
@@ -34,7 +39,7 @@ GLuint TextureLoader::loadTexture(const std::string texture_name)
     }
     
     //Getting the path of the texture
-    const std::string path = std::string(m_texture_directory) + "/" + texture_name;
+    const std::string path = directory + "/" + texture_name;
     
     //Detect the fileformat and load the image
     FREE_IMAGE_FORMAT formato = FreeImage_GetFileType(path.c_str(), 0);
@@ -66,9 +71,12 @@ GLuint TextureLoader::loadTexture(const std::string texture_name)
     //Add the index of our newly created texture to the map
     m_texture_map.insert(std::pair<const std::string, GLuint>(texture_name, tmpIndex));
     
-    //Use the new texture
+    //Use the new texture and do some assumptions about the texparametre
     glBindTexture(GL_TEXTURE_2D, tmpIndex);
-    gluBuild2DMipmaps(GL_TEXTURE_2D, GL_RGB, width , height, GL_RGBA, GL_UNSIGNED_BYTE, textura); // genereate MipMap levels for our texture
+    
+    //glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height,0,GL_RGBA,GL_UNSIGNED_BYTE, textura);
+    
+    gluBuild2DMipmaps(GL_TEXTURE_2D, GL_RGBA, width , height, GL_RGBA, GL_UNSIGNED_BYTE, textura); // genereate MipMap levels for our texture
     
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR); // give the best result for texture magnification
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR); //give the best result for texture minification
@@ -98,8 +106,6 @@ void TextureLoader::unloadTexture(const std::string texture_name)
         //Remove the key-value-pair from the map
         m_texture_map.erase(texture_name);
     }
-    
-    
 }
 
 bool TextureLoader::isTextureLoaded(const std::string texture_name)
@@ -118,4 +124,9 @@ GLuint TextureLoader::getTexture(const std::string texture_name)
     }
     
     return 0;
+}
+
+std::string TextureLoader::getTextureDirectory() const
+{
+    return m_texture_directory;
 }

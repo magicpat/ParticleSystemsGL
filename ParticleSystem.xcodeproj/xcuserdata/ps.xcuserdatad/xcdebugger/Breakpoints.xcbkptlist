@@ -8,11 +8,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ParticleSystem/fontain.cpp"
-         timestampString = "381114170.242861"
+         timestampString = "381179762.272109"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "90"
-         endingLineNumber = "90"
+         startingLineNumber = "87"
+         endingLineNumber = "87"
          landmarkName = "Fontain::draw()"
          landmarkType = "5">
       </FileBreakpoint>
@@ -71,11 +71,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ParticleSystem/Fontain.cpp"
-         timestampString = "381109587.491627"
+         timestampString = "381179198.713049"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "41"
-         endingLineNumber = "41"
+         startingLineNumber = "37"
+         endingLineNumber = "37"
          landmarkName = "Fontain::glCreateParticles ()"
          landmarkType = "5">
       </FileBreakpoint>
@@ -121,11 +121,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ParticleSystem/Drawable.cpp"
-         timestampString = "381104949.032451"
+         timestampString = "381273431.138617"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "49"
-         endingLineNumber = "49"
+         startingLineNumber = "60"
+         endingLineNumber = "60"
          landmarkName = "Drawable::draw()"
          landmarkType = "5">
       </FileBreakpoint>
@@ -134,11 +134,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ParticleSystem/Game.cpp"
-         timestampString = "381102751.278053"
+         timestampString = "381275316.571145"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "33"
-         endingLineNumber = "33"
+         startingLineNumber = "36"
+         endingLineNumber = "36"
          landmarkName = "Game::init()"
          landmarkType = "5">
       </FileBreakpoint>
@@ -197,11 +197,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ParticleSystem/Camera.cpp"
-         timestampString = "381102751.278053"
+         timestampString = "381275316.571145"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "166"
-         endingLineNumber = "166">
+         startingLineNumber = "191"
+         endingLineNumber = "191">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -221,12 +221,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ParticleSystem/Drawable.cpp"
-         timestampString = "381104949.032451"
+         timestampString = "381273431.138617"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "65"
-         endingLineNumber = "65"
-         landmarkName = "Drawable::rotate(Vector3D rotation)"
+         startingLineNumber = "77"
+         endingLineNumber = "77"
+         landmarkName = "Drawable::rotate(const Vector3D rotation)"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -234,12 +234,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ParticleSystem/Drawable.cpp"
-         timestampString = "381104949.032451"
+         timestampString = "381273431.138617"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "70"
-         endingLineNumber = "70"
-         landmarkName = "Drawable::rotate(Vector3D rotation)"
+         startingLineNumber = "82"
+         endingLineNumber = "82"
+         landmarkName = "Drawable::rotate(const Vector3D rotation)"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -271,11 +271,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ParticleSystem/Game.cpp"
-         timestampString = "381113829.289363"
+         timestampString = "381276757.049829"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "77"
-         endingLineNumber = "77"
+         startingLineNumber = "98"
+         endingLineNumber = "98"
          landmarkName = "Game::draw()"
          landmarkType = "5">
       </FileBreakpoint>
@@ -284,24 +284,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ParticleSystem/Game.cpp"
-         timestampString = "381113829.289363"
+         timestampString = "381276757.049829"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "79"
-         endingLineNumber = "79"
-         landmarkName = "Game::draw()"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "ParticleSystem/Game.cpp"
-         timestampString = "381113829.289363"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "80"
-         endingLineNumber = "80"
+         startingLineNumber = "101"
+         endingLineNumber = "101"
          landmarkName = "Game::draw()"
          landmarkType = "5">
       </FileBreakpoint>
@@ -323,11 +310,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ParticleSystem/Game.cpp"
-         timestampString = "381102751.278053"
+         timestampString = "381273241.501919"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "31"
-         endingLineNumber = "31"
+         startingLineNumber = "34"
+         endingLineNumber = "34"
          landmarkName = "Game::init()"
          landmarkType = "5">
       </FileBreakpoint>
@@ -336,11 +323,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ParticleSystem/Game.cpp"
-         timestampString = "381102751.278053"
+         timestampString = "381273241.501919"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "32"
-         endingLineNumber = "32"
+         startingLineNumber = "35"
+         endingLineNumber = "35"
          landmarkName = "Game::init()"
          landmarkType = "5">
       </FileBreakpoint>
@@ -349,12 +336,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ParticleSystem/Camera.cpp"
-         timestampString = "381102751.278053"
+         timestampString = "381275316.571145"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "91"
-         endingLineNumber = "91"
-         landmarkName = "Camera::calculateTranslation(int delta)"
+         startingLineNumber = "116"
+         endingLineNumber = "116"
+         landmarkName = "Camera::calculateTranslation(double delta)"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -362,12 +349,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ParticleSystem/Camera.cpp"
-         timestampString = "381102751.278053"
+         timestampString = "381275316.571145"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "92"
-         endingLineNumber = "92"
-         landmarkName = "Camera::calculateTranslation(int delta)"
+         startingLineNumber = "117"
+         endingLineNumber = "117"
+         landmarkName = "Camera::calculateTranslation(double delta)"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -375,12 +362,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ParticleSystem/Camera.cpp"
-         timestampString = "381102751.278053"
+         timestampString = "381275316.571145"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "133"
-         endingLineNumber = "133"
-         landmarkName = "Camera::calculateTranslation(int delta)"
+         startingLineNumber = "158"
+         endingLineNumber = "158"
+         landmarkName = "Camera::calculateTranslation(double delta)"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -388,12 +375,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ParticleSystem/Camera.cpp"
-         timestampString = "381102751.278053"
+         timestampString = "381275316.571145"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "102"
-         endingLineNumber = "102"
-         landmarkName = "Camera::calculateTranslation(int delta)"
+         startingLineNumber = "127"
+         endingLineNumber = "127"
+         landmarkName = "Camera::calculateTranslation(double delta)"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -401,12 +388,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ParticleSystem/Camera.cpp"
-         timestampString = "381102751.278053"
+         timestampString = "381275316.571145"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "133"
-         endingLineNumber = "133"
-         landmarkName = "Camera::calculateTranslation(int delta)"
+         startingLineNumber = "158"
+         endingLineNumber = "158"
+         landmarkName = "Camera::calculateTranslation(double delta)"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -414,12 +401,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ParticleSystem/Camera.cpp"
-         timestampString = "381102751.278053"
+         timestampString = "381275316.571145"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "92"
-         endingLineNumber = "92"
-         landmarkName = "Camera::calculateTranslation(int delta)"
+         startingLineNumber = "117"
+         endingLineNumber = "117"
+         landmarkName = "Camera::calculateTranslation(double delta)"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -427,23 +414,23 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ParticleSystem/Camera.cpp"
-         timestampString = "381102751.278053"
+         timestampString = "381275316.571145"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "136"
-         endingLineNumber = "136">
+         startingLineNumber = "161"
+         endingLineNumber = "161">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ParticleSystem/Camera.cpp"
-         timestampString = "381102751.278053"
+         timestampString = "381275316.571145"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "145"
-         endingLineNumber = "145"
-         landmarkName = "Camera::calculateRotation(int delta)"
+         startingLineNumber = "170"
+         endingLineNumber = "170"
+         landmarkName = "Camera::calculateRotation(double delta)"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -464,11 +451,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ParticleSystem/Camera.cpp"
-         timestampString = "381102751.278053"
+         timestampString = "381275316.571145"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "182"
-         endingLineNumber = "182"
+         startingLineNumber = "198"
+         endingLineNumber = "198"
          landmarkName = "Camera::draw()"
          landmarkType = "5">
       </FileBreakpoint>
@@ -477,11 +464,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ParticleSystem/3DS.cpp"
-         timestampString = "381005903.013715"
+         timestampString = "381247415.708165"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "70"
-         endingLineNumber = "70"
+         startingLineNumber = "77"
+         endingLineNumber = "77"
          landmarkName = "Model::loadFile(const char *name)"
          landmarkType = "5">
       </FileBreakpoint>
@@ -490,11 +477,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ParticleSystem/3DS.cpp"
-         timestampString = "381005903.013715"
+         timestampString = "381247415.708165"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "62"
-         endingLineNumber = "62"
+         startingLineNumber = "69"
+         endingLineNumber = "69"
          landmarkName = "Model::loadFile(const char *name)"
          landmarkType = "5">
       </FileBreakpoint>
@@ -503,11 +490,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ParticleSystem/3DS.cpp"
-         timestampString = "381005903.013715"
+         timestampString = "381265161.447177"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "342"
-         endingLineNumber = "342"
+         startingLineNumber = "311"
+         endingLineNumber = "311"
          landmarkName = "Model::renderNode(Lib3dsNode *node)"
          landmarkType = "5">
       </FileBreakpoint>
@@ -516,11 +503,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ParticleSystem/3DS.cpp"
-         timestampString = "381005903.013715"
+         timestampString = "381276469.095129"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "365"
-         endingLineNumber = "365"
+         startingLineNumber = "335"
+         endingLineNumber = "335"
          landmarkName = "Model::renderModel()"
          landmarkType = "5">
       </FileBreakpoint>
@@ -529,11 +516,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ParticleSystem/3DS.cpp"
-         timestampString = "381005903.013715"
+         timestampString = "381264584.382324"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "214"
-         endingLineNumber = "214"
+         startingLineNumber = "181"
+         endingLineNumber = "181"
          landmarkName = "Model::renderNode(Lib3dsNode *node)"
          landmarkType = "5">
       </FileBreakpoint>
@@ -542,11 +529,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ParticleSystem/3DS.cpp"
-         timestampString = "381006137.33046"
+         timestampString = "381247415.708165"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "184"
-         endingLineNumber = "184"
+         startingLineNumber = "152"
+         endingLineNumber = "152"
          landmarkName = "Model::applyTexture(Lib3dsMesh *mesh)"
          landmarkType = "5">
       </FileBreakpoint>
@@ -555,11 +542,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ParticleSystem/3DS.cpp"
-         timestampString = "381006177.356562"
+         timestampString = "381247415.708165"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "163"
-         endingLineNumber = "163"
+         startingLineNumber = "146"
+         endingLineNumber = "146"
          landmarkName = "Model::applyTexture(Lib3dsMesh *mesh)"
          landmarkType = "5">
       </FileBreakpoint>
@@ -568,37 +555,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ParticleSystem/3DS.cpp"
-         timestampString = "381006482.801306"
+         timestampString = "381276469.095129"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "145"
-         endingLineNumber = "145"
-         landmarkName = "Model::applyTexture(Lib3dsMesh *mesh)"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "ParticleSystem/3DS.cpp"
-         timestampString = "381006488.565646"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "139"
-         endingLineNumber = "139"
-         landmarkName = "Model::applyTexture(Lib3dsMesh *mesh)"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "ParticleSystem/3DS.cpp"
-         timestampString = "381006503.187647"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "363"
-         endingLineNumber = "363"
+         startingLineNumber = "333"
+         endingLineNumber = "333"
          landmarkName = "Model::renderModel()"
          landmarkType = "5">
       </FileBreakpoint>
@@ -607,11 +568,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ParticleSystem/3DS.cpp"
-         timestampString = "381006575.116144"
+         timestampString = "381276469.095129"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "375"
-         endingLineNumber = "375"
+         startingLineNumber = "345"
+         endingLineNumber = "345"
          landmarkName = "Model::renderModel()"
          landmarkType = "5">
       </FileBreakpoint>
@@ -620,11 +581,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ParticleSystem/3DS.cpp"
-         timestampString = "381007603.225031"
+         timestampString = "381276469.095129"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "376"
-         endingLineNumber = "376"
+         startingLineNumber = "346"
+         endingLineNumber = "346"
          landmarkName = "Model::renderModel()"
          landmarkType = "5">
       </FileBreakpoint>
@@ -633,11 +594,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ParticleSystem/3DS.cpp"
-         timestampString = "381007734.285078"
+         timestampString = "381276469.095129"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "374"
-         endingLineNumber = "374"
+         startingLineNumber = "344"
+         endingLineNumber = "344"
          landmarkName = "Model::renderModel()"
          landmarkType = "5">
       </FileBreakpoint>
@@ -646,11 +607,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ParticleSystem/3DS.cpp"
-         timestampString = "381010762.187202"
+         timestampString = "381276469.095129"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "373"
-         endingLineNumber = "373"
+         startingLineNumber = "343"
+         endingLineNumber = "343"
          landmarkName = "Model::renderModel()"
          landmarkType = "5">
       </FileBreakpoint>
@@ -672,12 +633,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ParticleSystem/TextureLoader.cpp"
-         timestampString = "381098505.554835"
+         timestampString = "381263765.705752"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "31"
-         endingLineNumber = "31"
-         landmarkName = "TextureLoader::loadTexture(const std::string texture_name)"
+         startingLineNumber = "36"
+         endingLineNumber = "36"
+         landmarkName = "TextureLoader::loadTexture(const std::string texture_name, const std::string directory)"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -685,12 +646,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ParticleSystem/TextureLoader.cpp"
-         timestampString = "381098826.231905"
+         timestampString = "381263765.705752"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "81"
-         endingLineNumber = "81"
-         landmarkName = "TextureLoader::loadTexture(const std::string texture_name)"
+         startingLineNumber = "89"
+         endingLineNumber = "89"
+         landmarkName = "TextureLoader::loadTexture(const std::string texture_name, const std::string directory)"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -698,12 +659,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ParticleSystem/TextureLoader.cpp"
-         timestampString = "381098738.567016"
+         timestampString = "381263765.705752"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "51"
-         endingLineNumber = "51"
-         landmarkName = "TextureLoader::loadTexture(const std::string texture_name)"
+         startingLineNumber = "56"
+         endingLineNumber = "56"
+         landmarkName = "TextureLoader::loadTexture(const std::string texture_name, const std::string directory)"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -711,12 +672,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ParticleSystem/TextureLoader.cpp"
-         timestampString = "381098826.231905"
+         timestampString = "381263765.705752"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "61"
-         endingLineNumber = "61"
-         landmarkName = "TextureLoader::loadTexture(const std::string texture_name)"
+         startingLineNumber = "66"
+         endingLineNumber = "66"
+         landmarkName = "TextureLoader::loadTexture(const std::string texture_name, const std::string directory)"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -724,12 +685,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ParticleSystem/TextureLoader.cpp"
-         timestampString = "381098822.135043"
+         timestampString = "381263765.705752"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "41"
-         endingLineNumber = "41"
-         landmarkName = "TextureLoader::loadTexture(const std::string texture_name)"
+         startingLineNumber = "46"
+         endingLineNumber = "46"
+         landmarkName = "TextureLoader::loadTexture(const std::string texture_name, const std::string directory)"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -737,25 +698,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ParticleSystem/Game.cpp"
-         timestampString = "381113829.289363"
+         timestampString = "381276757.049829"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "69"
-         endingLineNumber = "69"
-         landmarkName = "Game::update(int delta)"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "ParticleSystem/3DS.cpp"
-         timestampString = "381101677.657831"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "179"
-         endingLineNumber = "179"
-         landmarkName = "Model::applyTexture(Lib3dsMesh *mesh)"
+         startingLineNumber = "88"
+         endingLineNumber = "88"
+         landmarkName = "Game::update(double delta)"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -763,11 +711,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ParticleSystem/Game.h"
-         timestampString = "381103781.148592"
+         timestampString = "381266450.511334"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "36"
-         endingLineNumber = "36"
+         startingLineNumber = "37"
+         endingLineNumber = "37"
          landmarkName = "class Game"
          landmarkType = "3">
       </FileBreakpoint>
@@ -776,11 +724,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ParticleSystem/Game.cpp"
-         timestampString = "381102329.656351"
+         timestampString = "381273241.501919"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "24"
-         endingLineNumber = "24"
+         startingLineNumber = "27"
+         endingLineNumber = "27"
          landmarkName = "Game::~Game()"
          landmarkType = "5">
       </FileBreakpoint>
@@ -789,155 +737,25 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ParticleSystem/Game.cpp"
-         timestampString = "381102330.037057"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "23"
-         endingLineNumber = "23"
-         landmarkName = "Game::~Game()"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "ParticleSystem/Game.cpp"
-         timestampString = "381103761.831426"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "22"
-         endingLineNumber = "22"
-         landmarkName = "Game::~Game()"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "ParticleSystem/Fontain.cpp"
-         timestampString = "381110662.49609"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "19"
-         endingLineNumber = "19"
-         landmarkName = "Fontain::Fontain(Vector3D startPosition, TextureLoader* texture_loader)"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "ParticleSystem/TextureLoader.cpp"
-         timestampString = "381112556.261491"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "115"
-         endingLineNumber = "115"
-         landmarkName = "TextureLoader::getTexture(const std::string texture_name)"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "ParticleSystem/TextureLoader.cpp"
-         timestampString = "381110789.669633"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "33"
-         endingLineNumber = "33"
-         landmarkName = "TextureLoader::loadTexture(const std::string texture_name)"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "ParticleSystem/TextureLoader.cpp"
-         timestampString = "381110909.879625"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "67"
-         endingLineNumber = "67"
-         landmarkName = "TextureLoader::loadTexture(const std::string texture_name)"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "ParticleSystem/TextureLoader.cpp"
-         timestampString = "381112556.261491"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "110"
-         endingLineNumber = "110"
-         landmarkName = "TextureLoader::getTexture(const std::string texture_name)"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "ParticleSystem/Fontain.cpp"
-         timestampString = "381111837.224363"
+         timestampString = "381273241.501919"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "25"
          endingLineNumber = "25"
-         landmarkName = "Fontain::Fontain(Vector3D startPosition, TextureLoader* texture_loader)"
+         landmarkName = "Game::~Game()"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "ParticleSystem/TextureLoader.cpp"
-         timestampString = "381112556.261491"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "114"
-         endingLineNumber = "114"
-         landmarkName = "TextureLoader::getTexture(const std::string texture_name)"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "ParticleSystem/TextureLoader.cpp"
-         timestampString = "381112556.261491"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "113"
-         endingLineNumber = "113"
-         landmarkName = "TextureLoader::getTexture(const std::string texture_name)"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "ParticleSystem/TextureLoader.cpp"
-         timestampString = "381112433.043532"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "109"
-         endingLineNumber = "109"
-         landmarkName = "TextureLoader::getTexture(const std::string texture_name)"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "ParticleSystem/Fontain.cpp"
-         timestampString = "381112447.250829"
+         filePath = "ParticleSystem/Game.cpp"
+         timestampString = "381273241.501919"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "23"
          endingLineNumber = "23"
-         landmarkName = "Fontain::Fontain(Vector3D startPosition, TextureLoader* texture_loader)"
+         landmarkName = "Game::~Game()"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -945,51 +763,398 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ParticleSystem/Fontain.cpp"
-         timestampString = "381112448.853948"
+         timestampString = "381179198.713049"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "21"
+         endingLineNumber = "21"
+         landmarkName = "Fontain::Fontain(Vector3D startPosition, TextureLoader* texture_loader)"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "ParticleSystem/TextureLoader.cpp"
+         timestampString = "381264308.087789"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "121"
+         endingLineNumber = "121"
+         landmarkName = "TextureLoader::getTexture(const std::string texture_name)"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "ParticleSystem/TextureLoader.cpp"
+         timestampString = "381263765.705752"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "38"
+         endingLineNumber = "38"
+         landmarkName = "TextureLoader::loadTexture(const std::string texture_name, const std::string directory)"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "ParticleSystem/TextureLoader.cpp"
+         timestampString = "381263765.705752"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "72"
+         endingLineNumber = "72"
+         landmarkName = "TextureLoader::loadTexture(const std::string texture_name, const std::string directory)"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "ParticleSystem/TextureLoader.cpp"
+         timestampString = "381264308.087789"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "116"
+         endingLineNumber = "116">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "ParticleSystem/TextureLoader.cpp"
+         timestampString = "381264308.087789"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "120"
+         endingLineNumber = "120"
+         landmarkName = "TextureLoader::getTexture(const std::string texture_name)"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "ParticleSystem/TextureLoader.cpp"
+         timestampString = "381264308.087789"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "119"
+         endingLineNumber = "119"
+         landmarkName = "TextureLoader::getTexture(const std::string texture_name)"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "ParticleSystem/TextureLoader.cpp"
+         timestampString = "381264308.087789"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "115"
+         endingLineNumber = "115">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "ParticleSystem/Fontain.cpp"
+         timestampString = "381194487.994795"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "105"
+         endingLineNumber = "105"
+         landmarkName = "Fontain::draw()"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "ParticleSystem/main.cpp"
+         timestampString = "381182734.630055"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "26"
          endingLineNumber = "26"
-         landmarkName = "Fontain::Fontain(Vector3D startPosition, TextureLoader* texture_loader)"
+         landmarkName = "main( int argc, char* args[] )"
+         landmarkType = "7">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "ParticleSystem/3DS.cpp"
+         timestampString = "381264584.382324"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "289"
+         endingLineNumber = "289"
+         landmarkName = "Model::renderNode(Lib3dsNode *node)"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "ParticleSystem/Fontain.cpp"
-         timestampString = "381112588.914274"
+         filePath = "ParticleSystem/3DS.cpp"
+         timestampString = "381263765.705752"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "24"
-         endingLineNumber = "24"
-         landmarkName = "Fontain::Fontain(Vector3D startPosition, TextureLoader* texture_loader)"
+         startingLineNumber = "164"
+         endingLineNumber = "164"
+         landmarkName = "Model::applyTexture(Lib3dsMesh *mesh)"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "ParticleSystem/Fontain.cpp"
-         timestampString = "381114170.242861"
+         filePath = "ParticleSystem/3DS.cpp"
+         timestampString = "381263765.705752"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "108"
-         endingLineNumber = "108"
-         landmarkName = "Fontain::draw()"
+         startingLineNumber = "159"
+         endingLineNumber = "159"
+         landmarkName = "Model::applyTexture(Lib3dsMesh *mesh)"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "ParticleSystem/Fontain.cpp"
-         timestampString = "381114580.006412"
+         filePath = "ParticleSystem/3DS.cpp"
+         timestampString = "381263765.705752"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "123"
-         endingLineNumber = "123"
-         landmarkName = "Fontain::draw()"
+         startingLineNumber = "163"
+         endingLineNumber = "163"
+         landmarkName = "Model::applyTexture(Lib3dsMesh *mesh)"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "ParticleSystem/3DS.cpp"
+         timestampString = "381263765.705752"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "161"
+         endingLineNumber = "161"
+         landmarkName = "Model::applyTexture(Lib3dsMesh *mesh)"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "ParticleSystem/3DS.cpp"
+         timestampString = "381263765.705752"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "160"
+         endingLineNumber = "160"
+         landmarkName = "Model::applyTexture(Lib3dsMesh *mesh)"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "ParticleSystem/3DS.cpp"
+         timestampString = "381248443.630595"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "92"
+         endingLineNumber = "92"
+         landmarkName = "Model::loadFile(const char *name)"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "ParticleSystem/3DS.cpp"
+         timestampString = "381265161.447177"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "292"
+         endingLineNumber = "292"
+         landmarkName = "Model::renderNode(Lib3dsNode *node)"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "ParticleSystem/3DS.cpp"
+         timestampString = "381276469.095129"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "339"
+         endingLineNumber = "339"
+         landmarkName = "Model::renderModel()"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "ParticleSystem/3DS.cpp"
+         timestampString = "381258779.027062"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "58"
+         endingLineNumber = "58"
+         landmarkName = "Model::loadFile(const char *name)"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "ParticleSystem/3DS.cpp"
+         timestampString = "381260430.204649"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "148"
+         endingLineNumber = "148"
+         landmarkName = "Model::applyTexture(Lib3dsMesh *mesh)"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "ParticleSystem/TextureLoader.cpp"
+         timestampString = "381264014.213248"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "131"
+         endingLineNumber = "131"
+         landmarkName = "TextureLoader::getTextureDirectory()"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "ParticleSystem/Game.cpp"
+         timestampString = "381276757.049829"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "43"
+         endingLineNumber = "43"
+         landmarkName = "Game::init()"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "ParticleSystem/Window.cpp"
+         timestampString = "381270428.811686"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "94"
+         endingLineNumber = "94"
+         landmarkName = "Window::display( )"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "ParticleSystem/Camera.cpp"
+         timestampString = "381275316.571145"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "154"
+         endingLineNumber = "154"
+         landmarkName = "Camera::calculateTranslation(double delta)"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "ParticleSystem/Window.cpp"
+         timestampString = "381270593.756462"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "97"
+         endingLineNumber = "97"
+         landmarkName = "Window::display( )"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "ParticleSystem/Camera.cpp"
+         timestampString = "381275316.571145"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "37"
+         endingLineNumber = "37"
+         landmarkName = "Camera::update(double delta)"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "ParticleSystem/Window.cpp"
+         timestampString = "381271093.589254"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "95"
+         endingLineNumber = "95"
+         landmarkName = "Window::display( )"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "ParticleSystem/Camera.cpp"
+         timestampString = "381275316.571145"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "111"
+         endingLineNumber = "111"
+         landmarkName = "Camera::calculateTranslation(double delta)"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "ParticleSystem/Camera.cpp"
+         timestampString = "381276777.431617"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "153"
+         endingLineNumber = "153"
+         landmarkName = "Camera::calculateTranslation(double delta)"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "ParticleSystem/Camera.cpp"
+         timestampString = "381276816.475192"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "151"
+         endingLineNumber = "151"
+         landmarkName = "Camera::calculateTranslation(double delta)"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

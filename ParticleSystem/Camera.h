@@ -42,7 +42,7 @@ public:
 	Camera();
     virtual ~Camera();
     
-    virtual void update(int delta);
+    virtual void update(double delta);
     virtual void draw();
     
     //Sets the next mouse-movement to be used in the calculation
@@ -60,10 +60,15 @@ public:
     
     //Set the movement speed
     void setSpeed(double speed);
+    void setDirection(const Vector3D direction);
     
-    //Some methods to let the camera lock on positions
+    //Some methods to let the camera look on specific points
     void lookAt(Drawable* d);
     void lookAt(Vector3D* position);
+    
+    //Methods to snap and unsnap the camera (lock camera on a point)
+    void snapAt(Drawable* d);
+    void snapAt(Vector3D* position);
     void lookFree();
     
     //Getter
@@ -83,8 +88,8 @@ private:
     Vector3D* m_lookPosition;
     
     //Pre-Rendering methods (for update)
-    void calculateTranslation(int delta);
-    void calculateRotation(int delta);
+    void calculateTranslation(double delta);
+    void calculateRotation(double delta);
 };
 
 #endif /* defined(__ParticleSystem__Camera__) */

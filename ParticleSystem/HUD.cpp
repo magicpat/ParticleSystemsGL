@@ -23,7 +23,7 @@ HUD::~HUD()
     ;
 }
 
-void HUD::update(int delta)
+void HUD::update(double delta)
 {
     ;
 }

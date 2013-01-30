@@ -15,7 +15,7 @@ Camera::Camera() : Drawable(), m_up(Vector3D(0.0f, 1.0f, 0.0f)),
                                m_mode(CameraMode::FREE),
                                m_direction({0.0f, 0.0f, -1.0f}),
                                m_right({1.0f, 0.0f, 0.0f}),
-                               m_speed(0.03),
+                               m_speed(1),
                                m_rotation_movement(0.0, 0.0),
                                m_movement_bits(0)
 {
@@ -27,7 +27,12 @@ Camera::~Camera()
     ;
 }
 
-void Camera::update(int delta)
+void Camera::setDirection(const Vector3D direction)
+{
+    m_direction = direction;
+}
+
+void Camera::update(double delta)
 {
     calculateRotation(delta);
     calculateTranslation(delta);
@@ -38,15 +43,35 @@ void Camera::update(int delta)
 
 void Camera::lookAt(Drawable* d)
 {
-    m_lookDrawable = d;
-    m_mode = CameraMode::LOOK_AT_DRAWABLE;
+    Vector3D d_position = d->getPosition();
+    m_direction = d_position;
+    gluLookAt(m_position.x, m_position.y, m_position.z,
+              d_position.x, d_position.y, d_position.z,
+              m_up.x, m_up.y, m_up.z);
 }
 
 void Camera::lookAt(Vector3D* position)
 {
-    if(position != NULL){
+    m_direction = Vector3D(*position);
+    gluLookAt(m_position.x, m_position.y, m_position.z,
+              position->x, position->y, position->z,
+              m_up.x, m_up.y, m_up.z);
+}
+
+void Camera::snapAt(Vector3D* position)
+{
+    if(position){
         m_lookPosition = position;
         m_mode = CameraMode::LOOK_AT_POSITION;
+    }
+}
+
+void Camera::snapAt(Drawable* d)
+{
+    if(d)
+    {
+        m_lookDrawable = d;
+        m_mode = CameraMode::LOOK_AT_DRAWABLE;
     }
 }
 
@@ -81,7 +106,7 @@ void Camera::addRotation(Vector2D rotation)
     m_rotation_movement = rotation;
 }
 
-void Camera::calculateTranslation(int delta)
+void Camera::calculateTranslation(double delta)
 {
     if(m_movement_bits == 0)
     {
@@ -126,16 +151,16 @@ void Camera::calculateTranslation(int delta)
     if(movement.length() != 0){
         //Normalize movement and adjust the movement-speed
         movement.normalize();
-		movement = movement * m_speed * delta;
+		movement = movement * (m_speed * 50) * delta;
         
         //Add the movement to the position
 		m_position += movement;
     }
 }
 
-void Camera::calculateRotation(int delta)
+void Camera::calculateRotation(double delta)
 {
-	static const float kRotationSpeed = (m_speed / 100) * delta ;
+	static const float kRotationSpeed = (m_speed/50) * delta ;
     
     m_rotation.x += m_rotation_movement.x * kRotationSpeed;
     m_rotation.y += m_rotation_movement.y * kRotationSpeed;
@@ -166,15 +191,6 @@ void Camera::calculateRotation(int delta)
 void Camera::draw()
 {
     glLoadIdentity();
-    
-    /*
-    printf("m_movement_bits: %d\n", m_movement_bits);
-    printf("m_rotation_movement: X:%f Y:%f\n", m_rotation_movement.x, m_rotation_movement.y);
-    printf("m_rotation: %f , %f,  %f\n", m_rotation.x, m_rotation.y, m_rotation.z);
-    printf("m_direction: %f , %f,  %f\n", m_direction.x, m_direction.y, m_direction.z);
-    printf("m_position: %f , %f,  %f\n", m_position.x, m_position.y, m_position.z);
-    printf("m_up: %f , %f,  %f\n\n", m_up.x, m_up.y, m_up.z);
-    */
 
     switch(m_mode){
         case CameraMode::FREE:
@@ -183,15 +199,11 @@ void Camera::draw()
                       m_up.x, m_up.y, m_up.z);
             break;
         case CameraMode::LOOK_AT_DRAWABLE:
-            gluLookAt(m_position.x, m_position.y, m_position.z,
-                      m_lookDrawable->getPosition().x, m_lookDrawable->getPosition().y, m_lookDrawable->getPosition().z,
-                      m_up.x, m_up.y, m_up.z);
+            lookAt(m_lookDrawable);
             break;
             
         case CameraMode::LOOK_AT_POSITION:
-            gluLookAt(m_position.x, m_position.y, m_position.z,
-                      m_lookPosition->x, m_lookPosition->y, m_lookPosition->z,
-                      m_up.x, m_up.y, m_up.z);
+            lookAt(m_lookPosition);
             break;
     }
 }

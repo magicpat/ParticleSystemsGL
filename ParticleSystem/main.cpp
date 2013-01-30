@@ -17,9 +17,14 @@
 int main( int argc, char* args[] )
 {
     try{
+        if(argc == 1){
+            std::cerr << "Wrong parameters! Needs [resource_dir_path] as argument" << std::endl;
+            return 1;
+        }
+        
         //Create the most important application components
         Camera camera;
-        TextureLoader texture_loader("/Users/ps/XCodeProjects/ParticleSystem/ParticleSystem/resources");
+        TextureLoader texture_loader(args[1]);
         Game game(&camera, &texture_loader);
         HUD hud(Window::SCREEN_WIDTH, Window::SCREEN_HEIGHT, &camera);
         

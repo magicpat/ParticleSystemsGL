@@ -13,6 +13,7 @@
 #include "Drawable.h"
 #include "Camera.h"
 #include "TextureLoader.h"
+#include "Skybox.h"
 
 class Game : public Drawable {
 public:
@@ -23,7 +24,7 @@ public:
     virtual ~Game();
     
     //Methods derrived from Drawable
-    virtual void update(int delta);
+    virtual void update(double delta);
     virtual void draw();
     
     void addDrawable(Drawable* d);
@@ -35,9 +36,14 @@ private:
     //The elements to render
     std::vector<Drawable*> m_drawables;
     
+    //The wholeover room in which the scene is rendered
+    Skybox* m_skybox;
+    
     //Constructor-related variables
     Camera* m_camera;
     TextureLoader* m_texture_loader;
+    
+    void centerSkybox();
 };
 
 #endif /* defined(__ParticleSystem__Game__) */

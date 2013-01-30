@@ -39,17 +39,14 @@ public:
     virtual ~Fontain();
     
     //Overridden methods from Drawable
-    virtual void update(int delta);
+    virtual void update(double delta);
     virtual void draw();
     
 private:
-    GLuint LoadTextureRAW( const char * filename, int width, int height );
-    void FreeTexture( GLuint texturez );
-    void square ();
     void glCreateParticles();
     void glUpdateParticles(int delta);
     
-    GLuint m_textures[10];
+    GLuint m_texture;
     GLfloat m_radius;
     PARTICLE m_particles[MAX_PARTICLES];
     

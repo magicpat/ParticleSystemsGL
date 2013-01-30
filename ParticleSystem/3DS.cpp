@@ -30,7 +30,7 @@
 #include <FreeImagePlus.h>
 
 // constructor, enables and set properties of texture coordinate generation and set the current frame
-Model::Model() : curFrame(0), lightEnabled(glIsEnabled(GL_LIGHTING))
+Model::Model(TextureLoader* texture_loader) : curFrame(0), lightEnabled(glIsEnabled(GL_LIGHTING)), m_texture_loader(texture_loader)
 {
     ;
 }
@@ -56,6 +56,13 @@ void Model::loadFile(const char *name)
 {
     //Set the internal filename
 	filename = name;
+    
+    //Set full path of filename
+    m_file_path = std::string(filename); //TODO: Seems like filename equals filepath, still do a seperate instance variable
+    
+    //Set full path of file folder
+    size_t last = m_file_path.find_last_of('/');
+    m_folder_path = m_file_path.substr(0,last+1);
 	
     //Try to load file
 	file = lib3ds_file_load(filename);
@@ -143,8 +150,12 @@ void Model::applyTexture(Lib3dsMesh *mesh)
 			continue;
         
 		Lib3dsMaterial *mat;
-		bool found = false;
+		
 		mat = lib3ds_file_material_by_name(file, f->material);
+        
+        
+        
+        bool found = false;
 		for(unsigned int i = 0;i < textureFilenames.size();i++)
 		{
 			if(strcmp(mat->texture1_map.name, textureFilenames.at(i).c_str()) == 0)
@@ -157,52 +168,8 @@ void Model::applyTexture(Lib3dsMesh *mesh)
 		}
 		if(!found)
 		{
-			textureFilenames.push_back(mat->texture1_map.name);
-            
-            //Load the image
-            FREE_IMAGE_FORMAT formato = FreeImage_GetFileType(mat->texture1_map.name,0);//Automatocally detects the format(from over 20 formats!)
-            FIBITMAP* imagen = FreeImage_Load(formato, mat->texture1_map.name);
-            
-            FIBITMAP* temp = imagen;
-            imagen = FreeImage_ConvertTo32Bits(imagen);
-            FreeImage_Unload(temp);
-            
-            int width = FreeImage_GetWidth(imagen);
-            int height = FreeImage_GetHeight(imagen);
-            
-            GLubyte* textura = new GLubyte[4*width*height];
-            char* pixeles = (char*)FreeImage_GetBits(imagen);
-            
-            //FreeImage loads in BGR format, so you need to swap some bytes(Or use GL_BGR).
-            for(int j= 0; j<width*height; j++){
-                textura[j*4+0]= pixeles[j*4+2];
-                textura[j*4+1]= pixeles[j*4+1];
-                textura[j*4+2]= pixeles[j*4+0];
-                textura[j*4+3]= pixeles[j*4+3];
-            }
-            
-			GLuint tmpIndex; // temporary index to old the place of our texture
-            
-            //Allocate memory for one texture
-			glGenTextures(1, &tmpIndex);
-            
-            //Add the index of our newly created texture to textureIndices
-			textureIndices.push_back(tmpIndex); 
-            
-            //Use the new texture
-			glBindTexture(GL_TEXTURE_2D, tmpIndex); 
-			gluBuild2DMipmaps(GL_TEXTURE_2D, GL_RGB, width , height, GL_RGBA, GL_UNSIGNED_BYTE, textura); // genereate MipMap levels for our texture
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR); // give the best result for texture magnification
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR); //give the best result for texture minification
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP); // don't repeat texture
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP); // don't repeat texture
-            
-            //Check for errors
-            GLenum huboError = glGetError();
-            if(huboError){
-                std::cerr << "There was an error loading the texture '" << mat->texture1_map.name << "'" << std::endl;
-                return;
-            }
+            GLuint tmpIndex = m_texture_loader->loadTexture(mat->texture1_map.name, m_folder_path);
+            textureIndices.push_back(tmpIndex);
 		}
 	}    
 }
@@ -321,7 +288,9 @@ void Model::renderNode(Lib3dsNode *node)
 						{
 							glNormal3fv(normals[3*p+i]); //set normal vector of that point
 							if(mesh->texels)
+                            {
 								glTexCoord2f(mesh->texelL[f->points[i]][0], mesh->texelL[f->points[i]][1]);
+                            }
 							glVertex3fv(mesh->pointL[f->points[i]].pos); //Draw the damn triangle
 						}
 						glEnd();
@@ -345,10 +314,11 @@ void Model::renderNode(Lib3dsNode *node)
                 tmpdat = &node->data.object;
             
                 //Adjust matrix according to the node
-                glMultMatrixf(&node->matrix[0][0]);
+                //glMultMatrixf(&node->matrix[0][0]);
             
                 //Move to the right place;
                 glTranslatef(-tmpdat->pivot[0], -tmpdat->pivot[1], -tmpdat->pivot[2]);
+            
             
                 //Render node
                 glCallList(node->user.d); 
@@ -413,14 +383,20 @@ void Model::disableLights()
 	}
 }
 
-void Model::update(int delta)
+void Model::update(double delta)
 {
     ;
 }
 
 void Model::draw()
 {
+    glPushMatrix();
+    glColor4f(1,1,1,1);
+    glEnable(GL_TEXTURE_2D);
+    Drawable::draw();
     renderModel();
+    glDisable(GL_TEXTURE_2D);
+    glPopMatrix();
 }
 
 Lib3dsFile * Model::get3DSPointer()

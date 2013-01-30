@@ -17,8 +17,8 @@
 class GlassCube : public Drawable{
 public:
     GlassCube(Vector3D startPosition, GLfloat length, TextureLoader* texture_loader);
-    
-    virtual void update(int delta);
+    ~GlassCube();
+    virtual void update(double delta);
     virtual void draw();
     
 private:

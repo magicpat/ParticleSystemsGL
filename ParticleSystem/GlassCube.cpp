@@ -11,14 +11,19 @@
 
 
 GlassCube::GlassCube(Vector3D startPosition, GLfloat length, TextureLoader* texture_loader) :
-    Drawable(startPosition),
+    Drawable(startPosition, true),
     m_length(length),
     m_texture_loader(texture_loader)
 {
     loadTextures();
 }
 
-void GlassCube::update(int delta){
+GlassCube::~GlassCube()
+{
+    //TODO: Unload textures? - problem if multiple glasscube instances exist
+}
+
+void GlassCube::update(double delta){
     ;
 }
 
@@ -26,22 +31,7 @@ void GlassCube::update(int delta){
 void GlassCube::draw(){
     glPushMatrix();
     Drawable::draw();
-    /*
-    glTranslatef(m_position.x, m_position.y, m_position.z); //Move to origin
-    
-    glRotatef(m_rotation.x , 1.0, 0.0, 0.0);
-    glRotatef(m_rotation.y , 0.0, 1.0, 0.0);
-    glRotatef(m_rotation.z , 0.0, 0.0, 1.0);
-    glTranslatef(0.0f, 0.0f, 0.0f);
-    
-    
-     glTranslatef(m_position.x, m_position.y, m_position.z); //Move back to the actual position
-     glRotatef(m_rotation.x , 1.0, 0.0, 0.0);
-     glRotatef(m_rotation.y , 0.0, 1.0, 0.0);
-     glRotatef(m_rotation.z , 0.0, 0.0, 1.0);
-     glTranslatef(-m_width/2, 0, 0); //Move to origin
-     */
-    
+
     const GLfloat points[8][3] = {
         {0.0f,     0.0f,    0.0f},       //P0
         {m_length, 0.0f,    0.0f},       //P1
@@ -56,6 +46,10 @@ void GlassCube::draw(){
     glColor4f(1.0f, 1.0f, 1.0f, 0.5);
     glEnable(GL_BLEND);
     glEnable(GL_TEXTURE_2D);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    //glDisable (GL_DEPTH_TEST);
+    
+    //glDisable(GL_CULL_FACE);
     
     glBindTexture(GL_TEXTURE_2D, m_texture);
     glBegin(GL_QUADS);
@@ -111,7 +105,8 @@ void GlassCube::draw(){
     glEnd();
     glDisable(GL_TEXTURE_2D);
     glDisable(GL_BLEND);
-    
+    //glEnable(GL_DEPTH_TEST);
+    //glEnable(GL_CULL_FACE);
     glPopMatrix();
     
 }
@@ -120,4 +115,5 @@ void GlassCube::loadTextures()
 {
     //Loads the texture and makes it ready for use
     m_texture = m_texture_loader->loadTexture("glass.bmp");
+    
 }

@@ -13,17 +13,13 @@
 #include <math.h>
 
 
-Fontain::Fontain(Vector3D startPosition, TextureLoader* texture_loader) : Drawable(startPosition),  m_radius(1.0f), m_texture_loader(texture_loader){
+Fontain::Fontain(Vector3D startPosition, TextureLoader* texture_loader) :
+    Drawable(startPosition, true),
+    m_texture(texture_loader->loadTexture("star.png")),
+    m_radius(1.0f),
+    m_texture_loader(texture_loader)
+{
     glCreateParticles();
-    
-    m_texture_loader->loadTexture("particle_mask.raw");
-    m_texture_loader->loadTexture("particle.raw");
-    
-    //m_textures[0] = m_texture_loader->getTexture("particle_mask.raw");
-    //m_textures[1] = m_texture_loader->getTexture("particle.raw");
-    
-    m_textures[0] = LoadTextureRAW( "particle_mask.raw", 256, 256);
-    m_textures[1] = LoadTextureRAW( "particle.raw", 256, 256 );
 }
 
 
@@ -35,9 +31,9 @@ void Fontain::glCreateParticles () {
     int i;
     for (i = 0; i < MAX_PARTICLES; i++)
     {
-        m_particles[i].Xpos = m_position.x; 
-        m_particles[i].Ypos = m_position.y - m_radius;
-        m_particles[i].Zpos = m_position.z - m_radius;
+        m_particles[i].Xpos = 0;
+        m_particles[i].Ypos = 0;
+        m_particles[i].Zpos = 0;
         m_particles[i].Xmov = (((((((2 - 1 + 1) * rand()%11) + 1) - 1 + 1) * rand()%11) + 1) * 0.005) - (((((((2 - 1 + 1) * rand()%11) + 1) - 1 + 1) * rand()%11) + 1) * 0.005);
         m_particles[i].Zmov = (((((((2 - 1 + 1) * rand()%11) + 1) - 1 + 1) * rand()%11) + 1) * 0.005) - (((((((2 - 1 + 1) * rand()%11) + 1) - 1 + 1) * rand()%11) + 1) * 0.005);
         m_particles[i].Red = 1;
@@ -67,9 +63,9 @@ void Fontain::glUpdateParticles(int delta){
         
         if (m_particles[i].Ypos < -5)
         {
-            m_particles[i].Xpos = m_position.x; 
-            m_particles[i].Ypos = m_position.y - m_radius;
-            m_particles[i].Zpos = m_position.z - m_radius;
+            m_particles[i].Xpos = 0;
+            m_particles[i].Ypos = 0;
+            m_particles[i].Zpos = 0;
             m_particles[i].Red = 1;
             m_particles[i].Green = 1;
             m_particles[i].Blue = 1;
@@ -81,16 +77,16 @@ void Fontain::glUpdateParticles(int delta){
     }
 }
 
-void Fontain::update(int delta) {
+void Fontain::update(double delta) {
     glUpdateParticles(delta);
 }
 
 void Fontain::draw() {
     glPushMatrix();
+    
     Drawable::draw();
     
-    int i;
-    for (i = 1; i < MAX_PARTICLES; i++)
+    for (int i = 1; i < MAX_PARTICLES; i++)
     {
         glPushMatrix();
         
@@ -99,16 +95,21 @@ void Fontain::draw() {
         
         glScalef(m_particles[i].Scalez, m_particles[i].Scalez, m_particles[i].Scalez);
         
-        glDisable (GL_DEPTH_TEST);
+        
+        //glDisable (GL_DEPTH_TEST);
+        
+        //printf("distance: %f\n", m_camera_distance.z);
         glEnable (GL_BLEND);
-        glEnable(GL_TEXTURE_2D);
         
-        glBlendFunc (GL_DST_COLOR, GL_ZERO);
-        
-        
-        glBindTexture (GL_TEXTURE_2D, m_textures[0]);
-        glBegin (GL_QUADS);
-        
+        //Some Level-of-Detail
+        if(m_camera_distance < 40)
+        {
+            glEnable(GL_TEXTURE_2D);
+            
+            glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+            
+            glBindTexture (GL_TEXTURE_2D, m_texture);
+            glBegin (GL_QUADS);
             glTexCoord2d (0, 0);
             glVertex3f (-1, -1, 0);
             glTexCoord2d (1, 0);
@@ -117,69 +118,34 @@ void Fontain::draw() {
             glVertex3f (1, 1, 0);
             glTexCoord2d (0, 1);
             glVertex3f (-1, 1, 0);
-        glEnd();
-         
-        glBlendFunc (GL_ONE, GL_ONE);
-        glBindTexture (GL_TEXTURE_2D, m_textures[1]);
-        
-        glBegin (GL_QUADS);
-            glTexCoord2d (0, 0);
+            glEnd();
+            glDisable(GL_TEXTURE_2D);
+        }
+        else{
+            if(m_camera_distance > 70)
+            {
+                glColor4f(1.0, 1.0, 0.0 ,0.5);
+            }
+            else
+            {
+                glColor4f(1.0, 0.0, 0.0, 0.5);
+            }
+            
+            glPolygonMode(GL_FRONT, GL_FILL);
+            glPolygonMode(GL_BACK, GL_FILL);
+            //glDisable(GL_CULL_FACE);
+            glBegin (GL_QUADS);
             glVertex3f (-1, -1, 0);
-            glTexCoord2d (1, 0);
             glVertex3f (1, -1, 0);
-            glTexCoord2d (1, 1);
             glVertex3f (1, 1, 0);
-            glTexCoord2d (0, 1);
             glVertex3f (-1, 1, 0);
-        glEnd();
-
-        glEnable(GL_DEPTH_TEST);
+            glEnd();
+            //glEnable(GL_CULL_FACE);
+        }
         
-        glDisable(GL_TEXTURE_2D);
         glDisable(GL_BLEND);
-        
         glPopMatrix();
-        
+        //glEnable(GL_DEPTH_TEST);
     }
     glPopMatrix();
-}
-
-//function to load the RAW file
-GLuint Fontain::LoadTextureRAW( const char * filename, int width, int height )
-{
-    GLuint texture;
-    unsigned char * data;
-    FILE * file;
-    
-    file = fopen( filename, "rb" );
-    if ( file == NULL ) return 0;
-    
-    data = (unsigned char *)malloc( width * height * 3 );
-    
-    fread( data, width * height * 3, 1, file );
-    fclose( file );
-    
-    glGenTextures(1, &texture );            
-    
-    glBindTexture(GL_TEXTURE_2D, texture);
-    
-    glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-    glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-    
-    glTexEnvi( GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE );
-    
-    glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_NEAREST );
-    
-    glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR );
-    
-    gluBuild2DMipmaps(GL_TEXTURE_2D, 3, width, height, GL_RGB, GL_UNSIGNED_BYTE, data);
-    
-    free( data );
-    
-    return texture;
-}
-
-void Fontain::FreeTexture( GLuint texture )
-{
-    glDeleteTextures( 1, &texture );
 }
